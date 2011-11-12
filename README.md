@@ -23,6 +23,17 @@ Now, after the proepr ruby has been picked and you've got a clean gemset
 
 	bundle
 
+Clone the source and install proper gems
+
+	git clone git@github.com:hjhart/the_rotten_pirate.git
+	cd the_rotten_pirate
+	
+At this point you'll get prompted by RVM to trust this new .rvmrc file. If you don't have p290 you're welcome to remove and create your own .rvmrc file. Let me know if you get it tested in other rubies.
+
+Now, after the proepr ruby has been picked and you've got a clean gemset
+
+	bundle
+
 Run this command to initialize your sqlite database
 
 	rake init_db
@@ -30,9 +41,17 @@ Run this command to initialize your sqlite database
 ## Run tests
 
 	rspec spec
-	
-So far this has been tested on ruby-1.9.2-p290 on OSX 10.6
 
+So far this has been tested on ruby-1.9.2-p290 on OSX 10.6
+	
+## Play with gem
+
+Thanks to echoe, you can get a irb session loaded with the classes loaded inside of it.
+
+	rake console
+	
 ## Process
 
 Rotten Tomatoes -> The Rotten Pirate -> Download torrents to a directory -> Torrent program watching directory begins download.
+
+
