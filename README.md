@@ -38,6 +38,19 @@ Run this command to initialize your sqlite database
 
 	rake init_db
 	
+## Configure stuff!
+
+Edit the\_rotten\_pirate/config.yml
+
+	---
+	filter_out_less_than_percentage: 90 # This will reject all movies less than 90%
+	filter_out_non_certified: 1 # This will reject movies that aren't certified 'fresh'
+	filter_out_already_downloaded: 1 # This will reject movies that have already been downloaded. Don't recommend to turn this off.
+	comments: 
+	    analyze: true # Turn this off for faster querying.
+	    quality: high # or low
+	    results_to_analyze: 5 # Crank this up if you want to query more results comments. Maximum of 50 right now.
+	
 ## Run tests
 
 	rspec spec
@@ -49,6 +62,7 @@ So far this has been tested on ruby-1.9.2-p290 on OSX 10.6
 Thanks to echoe, you can get a irb session loaded with the classes loaded inside of it.
 
 	rake console
+	TheRottenPirate.execute
 	
 ## Process
 
