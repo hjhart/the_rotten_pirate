@@ -1,0 +1,71 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MovieID	Title	URL	NumTomatometerPercent	TomatometerRating	CertifiedFresh	ModifiedDate	ShowtimeURL	Description
+770687943	Harry Potter and the Deathly Hallows - Part 2	http://www.rottentomatoes.com/m/harry_potter_and_the_deathly_hallows_part_2/	96	FRESH	1			Thrilling, powerfully acted, and visually dazzling, <em>Deathly Hallows Part II</em> brings the <em>Harry Potter</em> franchise to a satisfying -- and suitably magical -- conclusion.
+16403	A Better Tomorrow	http://www.rottentomatoes.com/m/better_tomorrow/	93	FRESH	0			John Woo established himself as one of Hong Kong's premiere action directors with this ultra-hip, ultra-violent action classic. The film centers around the complex relationship between two brothers: Sung Tse-kit (Leslie Cheung) is a recent graduate...
+771197495	Incendies	http://www.rottentomatoes.com/m/incendies/	92	FRESH	1			It's messy, overlong, and a touch melodramatic, but those flaws pale before <em>Incendies</em>' impressive acting and devastating emotional impact.
+771208471	Tabloid	http://www.rottentomatoes.com/m/tabloid_2010/	92	FRESH	1			It's far from his most thought-provoking work, but <em>Tabloid</em> finds Errol Morris as smart, spirited, and engaging as ever.
+771041148	Winnie the Pooh	http://www.rottentomatoes.com/m/winnie_the_pooh_2011/	91	FRESH	1			Short, nostalgic, and gently whimsical, <em>Winnie the Pooh</em> offers young audiences -- and their parents -- a sweetly traditional family treat.
+771224156	Beats, Rhymes and Life: The Travels of A Tribe Called Quest	http://www.rottentomatoes.com/m/beats_rhymes_and_life_the_travels_of_a_tribe_called_quest/	91	FRESH	1			This documentary focuses less on the music and more on the personality clashes and in-group tensions to great, compelling effect.
+771200719	Rare Exports: A Christmas Tale	http://www.rottentomatoes.com/m/rare_exports/	90	FRESH	1			It's the eve of Christmas in northern Finland, and an 'archeological' dig has just unearthed the real Santa Claus. But this particular Santa isn't the one you want coming to town. When the local children begin mysteriously disappearing, young Pietari...
+771203801	Attack the Block	http://www.rottentomatoes.com/m/attack_the_block/	90	FRESH	1			A thrilling sci-fi yarn whose distinct British flavor supplies energy, wit, and style to burn.
+771039065	Bridesmaids	http://www.rottentomatoes.com/m/bridesmaids_2011/	90	FRESH	1			A marriage of genuine characters, gross out gags, and pathos, Bridesmaids is a female-driven comedy that refuses to be boxed in as Kristen Wiig emerges as a real star.
+702035972	I'm a Cyborg, But That's OK (Saibogujiman kwenchana)	http://www.rottentomatoes.com/m/im_a_cyborg_but_thats_ok/	90	FRESH	0			Young-goon is admitted to a mental institution. Believing herself a cyborg, she charges herself with a transistor radio. Il-soon, a fellow inmate, steals the other inmates' personality traits and believes he is fading and will one day turn into a...
+771041145	X-Men: First Class	http://www.rottentomatoes.com/m/x_men_first_class/	87	FRESH	1			With a strong script, stylish direction, and powerful performances from its well-rounded cast, <em>X-Men: First Class</em> is a welcome return to form for the franchise.
+771224186	Buck	http://www.rottentomatoes.com/m/buck/	87	FRESH	1			"Your horse is a mirror to your soul, and sometimes you may not like what you see. Sometimes, you will." So says Buck Brannaman, a true American cowboy and sage on horseback who travels the country for nine grueling months a year helping horses with...
+770875099	Submarine	http://www.rottentomatoes.com/m/submarine-2010/	86	FRESH	1			Funny, stylish, and ringing with adolescent truth, <em>Submarine</em> marks Richard Ayoade as a talent to watch.
+771225867	Terri	http://www.rottentomatoes.com/m/terri_2011/	86	FRESH	1			A hit at the Sundance 2011 Film Festival, Terri is a moving and often funny film about the relationship between Terri, an oversized teen misfit, and the garrulous but well-meaning vice principal (John C. Reilly) who takes an interest in him. Terri is...
+771182967	A Better Life	http://www.rottentomatoes.com/m/a_better_life/	86	FRESH	1			From the director of About a Boy comes A Better Life - a touching, poignant, multi-generational story about a father's love and the lengths a parent will go to give his child the opportunities he never had. -- (C) Summit
+771205009	The Strange Case Of Angelica	http://www.rottentomatoes.com/m/the_strange_case_of_angelica_2010/	84	FRESH	0			The new film from master filmmaker Manoel de Oliveira, The Strange Case of Angelica is a magical tale about a young photographer who falls madly in love with a woman he can never have, except in his dreams. Late one night, Isaac is summoned by a...
+771205000	The Princess Of Montpensier	http://www.rottentomatoes.com/m/the_princess_of_montpensier/	84	FRESH	1			France, 1562. Against a background of the savage Catholic/Protestant wars, Marie de Mézières (Mélanie Thierry), a beautiful young aristocrat, and the rakish Henri de Guise (Gaspard Ulliel), fall in love, but Marie's father has promised her hand in...
+770793166	The Tree of Life	http://www.rottentomatoes.com/m/the_tree_of_life_2011/	84	FRESH	1			Terrence Malick's singularly deliberate style may prove unrewarding for some, but for patient viewers, <em>Tree of Life</em> is an emotional as well as visual treat.
+771225882	Life in a Day	http://www.rottentomatoes.com/m/life_in_a_day_2011/	81	FRESH	1			The 24th July 2010.... 80,000 Lives.... 4,500 Hours of Footage... 2 Award winning Filmmakers..... Now one incredible motion picture event. What began life as a startling cinematic experiment becomes the must see movie experience of the Summer....
+771208507	The Last Circus	http://www.rottentomatoes.com/m/balada_triste_de_trompeta/	81	FRESH	0			1937, Spain is in the midst of the brutal Spanish Civil War. A "Happy" circus clown is interrupted mid-performance and forcibly recruited by a militia. Still in his costume, he is handed a machete and led into battle against National soldiers, where...
+771236491	Conan O'Brien Can't Stop	http://www.rottentomatoes.com/m/conan_obrien_cant_stop_2011/	79	FRESH	1			After a much-publicized departure from hosting NBC's Tonight Show - and the severing of a 22-year relationship with the network - O'Brien hit the road with a 32-city music-and-comedy show to exercise his performing chops and exorcise a few demons....
+770739679	Captain America: The First Avenger	http://www.rottentomatoes.com/m/captain-america/	79	FRESH	1			With plenty of pulpy action, a pleasantly retro vibe, and a handful of fine performances, <em>Captain America</em> is solidly old-fashioned blockbuster entertainment.
+771203531	Crazy, Stupid, Love.	http://www.rottentomatoes.com/m/crazy_stupid_love/	78	FRESH	1			It never lives up to the first part of its title, but <em>Crazy, Stupid, Love</em>'s unabashed sweetness -- and its terrifically talented cast -- more than make up for its flaws.
+771201465	Chalet Girl	http://www.rottentomatoes.com/m/chalet_girl/	78	FRESH	0			Chalet Girl is light comedic fun geared for teenage girls, featuring a charming performance from Felicity Jones.
+770873459	Fast Five	http://www.rottentomatoes.com/m/fast_five/	78	FRESH	1			Sleek, loud, and over the top, <em>Fast Five</em> proudly embraces its brainless action thrills.
+770783549	Thor	http://www.rottentomatoes.com/m/thor/	77	FRESH	1			A dazzling blockbuster that tempers its sweeping scope with wit, humor, and human drama, <em>Thor</em> is mighty Marvel entertainment.
+771205671	Everything Must Go	http://www.rottentomatoes.com/m/everything_must_go/	74	FRESH	1			It may not improve on the Raymond Carver short story that inspired it, but <em>Everything Must Go</em> resists cliche and boasts a pair of magnetic performances from the perfectly cast Ferrell and Wallace.
+771091481	Hanna	http://www.rottentomatoes.com/m/hanna/	71	FRESH	1			Fantastic acting and crisply choreographed action sequences propel this unique, cool take on the revenge thriller.
+771224804	Shaolin	http://www.rottentomatoes.com/m/shaolin/	71	FRESH	0			As feuding warlords fight to expand their power, the noble monks of the Shaolin Temple clean up the mess left behind, tending to the injured while trying their best to protect the poor and weak. General Hou (Andy Lau) has caused much of this mess...
+771208626	Beautiful Boy	http://www.rottentomatoes.com/m/beautiful_boy/	70	FRESH	0			Bill (Michael Sheen) and Kate (Maria Bello) hopelessly try to find some hint of an explanation after finding out that their only son committed a mass shooting at his university before taking his own life. They struggle numbly through the funeral, the...
+771041149	Horrible Bosses	http://www.rottentomatoes.com/m/horrible_bosses/	69	FRESH	1			It's nasty, uneven, and far from original, but thanks to a smartly assembled cast that makes the most of a solid premise, <em>Horrible Bosses</em> works.
+771036678	African Cats	http://www.rottentomatoes.com/m/african_cats/	69	FRESH	0			It isn't quite as majestic as its subjects, but <em>African Cats</em> boasts enough astounding footage -- and a big enough heart -- to keep things entertaining.
+771204250	Water for Elephants	http://www.rottentomatoes.com/m/water_for_elephants/	61	FRESH	0			It's a tale tastefully told and beautifully filmed, but <em>Water for Elephants</em> suffers from a pronounced lack of chemistry between its leads.
+771217942	We Are The Night	http://www.rottentomatoes.com/m/we_are_the_night/	60	FRESH	0			Dennis Gansel, responsible for the hit The Wave, explores night time in Berlin to find a sect of seductive lady vampires that hide out in the city's alternative clubs and enjoy the luxury and pleasures their attained immortality provides them. A...
+771034093	Red State	http://www.rottentomatoes.com/m/red_state/	59	ROTTEN	0			Red State is an audacious and brash affair that ultimately fails to provide competent scares or thrills.
+770807411	Scream 4	http://www.rottentomatoes.com/m/scream-4/	58	ROTTEN	0			The franchise is showing its age, but <em>Scream 4</em> is undeniably an improvement over its predecessor, with just enough meta humor and clever kills.
+770814817	Hesher	http://www.rottentomatoes.com/m/hesher/	54	ROTTEN	0			It has a dark sense of humor and a refreshing lack of sentimentality, but like its title character, <em>Hesher</em> isn't really interested in going anywhere.
+771030879	Bad Teacher	http://www.rottentomatoes.com/m/bad_teacher/	44	ROTTEN	0			In spite of a promising concept and a charmingly brazen performance from Cameron Diaz, <em>Bad Teacher</em> is never as funny as it should be.
+770816610	A Little Help	http://www.rottentomatoes.com/m/a-little-help/	44	ROTTEN	0			It's a movie for everyone whose life has been thrown off-course, out of whack, or simply not turned out the way they planned it. In other words, it's a movie for everyone, period. Set in suburban Long Island in the summer of 2002, with the psychic...
+770805427	Cars 2	http://www.rottentomatoes.com/m/cars_2/	38	ROTTEN	0			<em>Cars 2</em> is as visually appealing as any other Pixar production, but all that dazzle can't disguise the rusty storytelling under the hood.
+771202906	Monte Carlo	http://www.rottentomatoes.com/m/monte_carlo_2011/	38	ROTTEN	0			Although it has its charming moments, <em>Monte Carlo</em> is mostly silly, predictable stuff that never pushes beyond the boundaries of formula.
+771223136	Transformers: Dark of the Moon	http://www.rottentomatoes.com/m/transformers_dark_of_the_moon/	35	ROTTEN	0			Its special effects -- and 3D shots -- are undeniably impressive, but they aren't enough to fill up its loud, bloated running time, or mask its thin, indifferent script.
+770855546	Pirates of the Caribbean: On Stranger Tides	http://www.rottentomatoes.com/m/pirates_of_the_caribbean_on_stranger_tides/	33	ROTTEN	0			It's shorter and leaner than the previous sequel, but this <em>Pirates</em> runs aground on a disjointed plot and a non-stop barrage of noisy action sequences.
+770805051	The Tempest	http://www.rottentomatoes.com/m/tempest/	30	ROTTEN	0			Director Julie Taymor's gender-swapping of roles and some frenzied special effects can't quite disguise an otherwise stagey, uninspired take on Shakespeare's classic.
+770677993	Green Lantern	http://www.rottentomatoes.com/m/green_lantern/	27	ROTTEN	0			Noisy, overproduced, and thinly written, <em>Green Lantern</em> squanders an impressive budget and decades of comics mythology.
+771041150	The Change-Up	http://www.rottentomatoes.com/m/the_change_up/	24	ROTTEN	0			There's a certain amount of fun to be had from watching Bateman and Reynolds play against type, but it isn't enough to carry <em>The Change-Up</em> through its crude humor and formulaic plot.
+771205663	Snow Flower And The Secret Fan	http://www.rottentomatoes.com/m/snow_flower_and_the_secret_fan/	20	ROTTEN	0			In 19th-century China, seven year old girls Snow Flower and Lily are matched as laotong - or "old sames" - bound together for eternity. Isolated by their families, they furtively communicate by taking turns writing in a secret language, nu shu,...
+771229930	Judy Moody and the NOT Bummer Summer	http://www.rottentomatoes.com/m/judy_moody_and_the_not_bummer_summer/	19	ROTTEN	0			Entertaining for some very young viewers, but for those with normal attention spans, <em>Judy Moody</em> is loud hyperactive overload.
+770805419	Zookeeper	http://www.rottentomatoes.com/m/zookeeper/	14	ROTTEN	0			<em>Zookeeper</em> smothers Kevin James's with a sodden script and a surfeit of jokes inappropriate for the young viewers who would be intrigued by its juvenile storyline.
+771033843	Atlas Shrugged Part I	http://www.rottentomatoes.com/m/atlas_shrugged_part_i/	12	ROTTEN	0			Passionate ideologues may find it compelling, but most filmgoers will find this low-budget adaptation of the Ayn Rand bestseller decidedly lacking.
