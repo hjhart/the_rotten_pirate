@@ -11,8 +11,10 @@ GEM
       rdoc (>= 3.6.1)
       rubyforge (>= 2.0.4)
     gemcutter (0.7.0)
+    hpricot (0.8.4)
     json (1.6.1)
     json_pure (1.6.1)
+    nokogiri (1.5.0)
     rake (0.9.2.2)
     rdoc (3.11)
       json (~> 1.4)
@@ -36,6 +38,8 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   echoe
+  hpricot
+  nokogiri
   rspec (~> 2.7)
   sequel (~> 3.2)
   sqlite3 (~> 1.3)

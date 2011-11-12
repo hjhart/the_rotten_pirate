@@ -32,5 +32,12 @@ describe Download do
       Download.exists?("Movie Title").should be_true
     end
   end
+  
+  describe "clean_title" do
+    it "should remove any minus signs" do
+      clean_title = Download.clean_title "Harry Potter and the Deathly Hallows - Part 2"
+      clean_title.should == "Harry Potter and the Deathly Hallows  Part 2"
+    end
+  end
 end
    

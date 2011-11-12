@@ -32,6 +32,23 @@ describe TheRottenPirate do
     end
   end
   
+  describe "#filter_out_already_downloaded" do
+    before do
+      Download.insert "The Strange Case Of Angelica"
+    end
+    
+    after do
+      Download.connection[:downloads].filter(:name => 'Movie Title').delete
+    end
+  
+    it "should filter out already downloaded movies" do
+      trp = TheRottenPirate.new
+      trp.filter_out_already_downloaded
+      dvds = trp.instance_variable_get(:@dvds)
+      dvds.each { |dvd| dvd["Title"].should_not eq "The Strange Case Of Angelica" }
+    end
+  end
+  
   describe "#filter_percentage" do
     it "should filter out anything lower than the parameter" do
       dvds = TheRottenPirate.new

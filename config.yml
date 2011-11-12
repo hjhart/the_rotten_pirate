@@ -1,3 +1,8 @@
 ---
-filter_out_percentage: 90
+filter_out_less_than_percentage: 90
 filter_out_non_certified: 1
+filter_out_already_downloaded: 1
+comments:
+    analyze: true
+    quality: high # or low
+    results_to_analyze: 5

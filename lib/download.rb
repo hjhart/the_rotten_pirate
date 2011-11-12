@@ -14,4 +14,9 @@ class Download
     db = connection
     db[:downloads].insert(:name => name)
   end
+  
+  def self.clean_title movie_title
+    movie_title.gsub(/-/, '')
+  end
+  
 end
