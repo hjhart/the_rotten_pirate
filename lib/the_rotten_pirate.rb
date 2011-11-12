@@ -10,7 +10,7 @@ class TheRottenPirate
   end
   
   def self.execute
-    Logger.new
+    l = ForkLogger.new
     
     trp = TheRottenPirate.new
     trp.fetch_new_dvds
@@ -20,11 +20,11 @@ class TheRottenPirate
     trp.filter_out_already_downloaded if config["filter_out_already_downloaded"]
     
     trp.dvds.each do |dvd|
-      puts "***" * 80
-      puts "Searching for #{dvd["Title"]}"
-      puts "***" * 80
+      l.puts "***" * 80
+      l.puts "Searching for #{dvd["Title"]}"
+      l.puts "***" * 80
       search = PirateBay::Search.new Download.clean_title(dvd["Title"])
-      ap results = search.execute
+      l.puts ap results = search.execute
       
       if config["comments"]["analyze"]
         
@@ -40,7 +40,7 @@ class TheRottenPirate
           url = "http://www.thepiratebay.org/torrent/#{result.id}/"
           html = open(url).read
           p = PirateBay::Details.new html, comment_quality
-          puts "Fetching results"
+          l.puts "Fetching comments results from #{url}"
           result = { 
             :seeds => result.seeds, 
             :size => result.size, 
@@ -50,7 +50,7 @@ class TheRottenPirate
             :url => url,
             :link => result.link
           } 
-          puts "Results: #{result}"
+          l.puts "Results: #{result.inspect}"
           result
         end
       end

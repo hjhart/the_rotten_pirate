@@ -8,7 +8,13 @@ class ForkLogger
     @loggers << Logger.new("logs/#{timestamp}.log")
     @loggers << Logger.new(STDOUT)
   end
-    
+  
+  def puts message
+    @loggers.each do |logger|
+      logger.info message
+    end
+  end
+  
   def method_missing method, message
     @loggers.each do |logger|
       logger.send(method, message)
