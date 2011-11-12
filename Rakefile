@@ -13,3 +13,15 @@ task :default => :console
 task :console do
   sh "irb -rubygems -r ./lib/torrent_api.rb"
 end
+
+task :init_db do
+  require "sequel"
+  
+  FileUtils.mkdir_p('db')
+  DB = Sequel.sqlite('db/downloads.sqlite')
+  
+  DB.create_table :downloads do
+    primary_key :id
+    String :name
+  end
+end

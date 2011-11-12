@@ -1,8 +1,18 @@
 require 'awesome_print'
+require 'yaml'
+require 'download'
 
 class TheRottenPirate
   def initialize
     @dvds = nil
+  end
+  
+  def self.execute
+    trp = TheRottenPirate.new
+    trp.fetch_new_dvds
+    config = YAML.load(File.open('config.yml').read)
+    trp.filter_percentage config["filter_out_percentage"] if config["filter_out_percentage"]
+    trp.filter_out_non_certified if config["filter_out_non_certified"]
   end
   
   def filter_out_non_certified

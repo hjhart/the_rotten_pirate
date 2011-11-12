@@ -4,3 +4,8 @@ The general idea of this will be slurp in some feeds from rotten tomatoes, make 
 
 ## Rotten Tomatoes -> Machine -> Download torrents to a directory -> Torrent program watching directory begins download.
 
+
+## Setup
+
+Run this command to initialize your sqlite database
+	rake init_db
