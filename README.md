@@ -37,7 +37,7 @@ Run this command to initialize your sqlite database
 	
 ### Configure stuff!
 
-Important configurations in config.yml
+Important configurations in config/config.yml
 
 * `["download_directory"]`
 
@@ -65,7 +65,7 @@ Don't query for comments unless there are this many seeds on the torrent (there 
 	
 You'll see the search begin (this can take anywhere from 3 to 5 minutes).
 
-## Run tests
+### Run tests
 
 	rspec spec
 
@@ -78,6 +78,11 @@ Thanks to echoe, you can get a irb session loaded with the classes loaded inside
 	rake console
 	TheRottenPirate.execute
 	
+### Do this automatically from now on!
+
+Run `crontab -e` and paste the following into there to start a new cronjob. It will run every 2 days at 12:30am. Make sure the change `cd ~/Sites/the_rotten_pirate` to the directory where your code lives.
+
+	30 0 1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31 * * /bin/bash -l -c 'cd ~/Sites/the_rotten_pirate && bundle exec rake execute --silent >> /dev/null 2>&1'
 
 ### Potential TODOS
 

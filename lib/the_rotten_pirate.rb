@@ -14,7 +14,7 @@ class TheRottenPirate
   
   def self.execute
     
-    config = YAML.load(File.open('config.yml').read)
+    config = YAML.load(File.open('config/config.yml').read)
     captain = TheRottenPirate.new
     output = captain.instance_variable_get(:@l)
     captain.gather_and_filter_dvds config

@@ -8,3 +8,6 @@ end
 gem 'torrent_api', '~>0.2'
 gem 'sequel', '~>3.2'
 gem 'sqlite3', '~>1.3'
+gem 'whenever'
+gem 'i18n'
+gem 'rake'

@@ -24,7 +24,7 @@ class Download
   end
   
   def self.download_directory
-    config = YAML.load(File.open('config.yml').read)
+    config = YAML.load(File.open('config/config.yml').read)
     download_dir = config["download_directory"] || 'tmp/torrent'
     dirs = download_dir.strip.split('/')
     # This converts any relative home directories to one ruby likes better (osx only probably)
