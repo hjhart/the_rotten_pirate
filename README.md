@@ -21,6 +21,9 @@ At this point you'll get prompted by RVM to trust this new .rvmrc file. If you d
 
 Now, after the proepr ruby has been picked and you've got a clean gemset
 
+You may need to install bundler (I prefer bundler 1.1 right now)
+
+	gem install bundler --pre
 	bundle
 
 Clone the source and install proper gems
