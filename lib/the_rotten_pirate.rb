@@ -89,6 +89,9 @@ class TheRottenPirate
         l.puts "Download failed while starting."
       end
     end
+
+    l.puts "Done!"    
+    l.puts "Downloaded a total of #{downloads.size} torrents (disclaimer: did any downloads say they failed while starting?)"
   end
   
   def filter_out_already_downloaded

@@ -40,9 +40,14 @@ Run this command to initialize your sqlite database
 	
 ## Configure stuff!
 
+Important configurations in config.yml
+	download\_directory: Set your download_directory to a directory you have monitored by your torrent application. 
+	filter\_out\_less\_than\_percentage: Change this to whatever percent you can handle watching.
+
+Most other stuff is already configured and has been attempted to be optimized.
+
 Edit the\_rotten\_pirate/config.yml
 
-	---
 	filter_out_less_than_percentage: 90 # This will reject all movies less than 90%
 	filter_out_non_certified: 1 # This will reject movies that aren't certified 'fresh'
 	filter_out_already_downloaded: 1 # This will reject movies that have already been downloaded. Don't recommend to turn this off.
@@ -51,6 +56,7 @@ Edit the\_rotten\_pirate/config.yml
 	    quality: high # or low
 	    results_to_analyze: 5 # Crank this up if you want to query more results comments. Maximum of 50 right now.
 	download_directory: tmp/torrents # can be relative to the current directory (as seen), or it can be from the home directory (e.g. ~/Torrents)
+	
 	
 ## Run tests
 
