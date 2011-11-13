@@ -28,7 +28,6 @@ class TheRottenPirate
     dvd_results = []
     downloads = []
     
-    l.puts "Searching..."
     l.puts "*" * 80
     l.puts "Attempting to download the following titles: "
     l.puts trp.dvds.map { |dvd| dvd["Title"] }
