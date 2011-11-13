@@ -15,7 +15,11 @@ class TheRottenPirate
     l = ForkLogger.new
     
     trp = TheRottenPirate.new
+
+    l.puts "Searching..."
     trp.fetch_new_dvds
+
+    l.puts "Filtering..."
     config = YAML.load(File.open('config.yml').read)
     trp.filter_percentage config["filter_out_less_than_percentage"] if config["filter_out_less_than_percentage"]
     trp.filter_out_non_certified if config["filter_out_non_certified"]
@@ -24,10 +28,16 @@ class TheRottenPirate
     dvd_results = []
     downloads = []
     
+    l.puts "Searching..."
+    l.puts "*" * 80
+    l.puts "Attempting to download the following titles: "
+    l.puts trp.dvds.map { |dvd| dvd["Title"] }
+    l.puts "*" * 80
+        
     trp.dvds.each do |dvd|
-      l.puts "***" * 80
+      l.puts "*" * 80
       l.puts "Searching for #{dvd["Title"]}"
-      l.puts "***" * 80
+      l.puts "*" * 80
       search = PirateBay::Search.new Download.clean_title(dvd["Title"])
       l.puts results = search.execute
       
@@ -39,6 +49,11 @@ class TheRottenPirate
           comment_quality = :init
         else
           comment_quality = :full
+        end
+        
+        if results.empty?
+          l.puts "There were no torrents found for #{dvd["Title"]}. Moving on now."
+          next
         end
         
         results = results[0,results_to_analyze].map do |result|

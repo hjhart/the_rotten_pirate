@@ -69,3 +69,9 @@ Thanks to echoe, you can get a irb session loaded with the classes loaded inside
 Don't bother taking the time requesting comments from the pirate bay if there is less than (some configurable amount) number of seeds
 Make sure if there are no ratings that first seeded wins (pretty sure this is already happening)
 Allow for import of top movies?
+Add more of http://www.rottentomatoes.com/help_desk/syndication_txt.php these
+Have a method of deleting movies (or at least whiping the database clean)
+I'm getting some Timeout::Errors when I'm downloading too many torrents at once. Can we catch those?
+cron jobs for getting the rake task to run.
+Fix the [] for nilClass when there are no results returned from TPB::Search. (error: rake aborted! -- undefined method `[]' for nil:NilClass)
+Refactor execute to be more modular.
