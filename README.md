@@ -26,17 +26,6 @@ You may need to install bundler (I prefer bundler 1.1 right now)
 	gem install bundler --pre
 	bundle
 
-Clone the source and install proper gems
-
-	git clone git@github.com:hjhart/the_rotten_pirate.git
-	cd the_rotten_pirate
-	
-At this point you'll get prompted by RVM to trust this new .rvmrc file. If you don't have p290 you're welcome to remove and create your own .rvmrc file. Let me know if you get it tested in other rubies.
-
-Now, after the proepr ruby has been picked and you've got a clean gemset
-
-	bundle
-
 Run this command to initialize your sqlite database
 
 	rake init_db
@@ -44,6 +33,7 @@ Run this command to initialize your sqlite database
 ## Configure stuff!
 
 Important configurations in config.yml
+
 	download\_directory: Set your download_directory to a directory you have monitored by your torrent application. 
 	filter\_out\_less\_than\_percentage: Change this to whatever percent you can handle watching.
 
@@ -59,13 +49,19 @@ Edit the\_rotten\_pirate/config.yml
 	    quality: high # or low
 	    results_to_analyze: 5 # Crank this up if you want to query more results comments. Maximum of 50 right now.
 	download_directory: tmp/torrents # can be relative to the current directory (as seen), or it can be from the home directory (e.g. ~/Torrents)
+
+## Run the process!
+
+	rake execute
 	
-	
+You should see a bunch of output. If you don't, run the smallish test suite and see if it's all passing.
+
 ## Run tests
 
 	rspec spec
 
 So far this has been tested on ruby-1.9.2-p290 on OSX 10.6
+	
 	
 ## Play with gem
 
