@@ -25,9 +25,9 @@ describe TheRottenPirate do
     end
   end
   
-  describe "#filter_out_non_certified" do
+  describe "#filter_out_non_certified_fresh" do
     it "should not show any non certified movies" do
-      dvds = TheRottenPirate.new.filter_out_non_certified
+      dvds = TheRottenPirate.new.filter_out_non_certified_fresh
       dvds.each { |dvd| dvd["CertifiedFresh"].should_not eq "0" }
     end
   end
@@ -66,7 +66,7 @@ describe TheRottenPirate do
       filter.filter_percentage(80)
       eightieth_percentile = filter.instance_variable_get(:@dvds)
       
-      filter.filter_out_non_certified
+      filter.filter_out_non_certified_fresh
       certified_and_eighteith_percentile = filter.instance_variable_get(:@dvds)
       (eightieth_percentile - certified_and_eighteith_percentile).size.should == 4
     end

@@ -1,9 +1,9 @@
 ---
 filter_out_less_than_percentage: 90
-filter_out_non_certified: true
+filter_out_non_certified_fresh: true
 filter_out_already_downloaded: true
 comments:
-    analyze: true # Turning this off isn't even supported right now.
+    analyze: true
     quality: high # or low
-    results_to_analyze: 15
+    num_to_analyze: 9
 download_directory: ~/Torrents

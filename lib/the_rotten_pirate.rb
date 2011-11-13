@@ -9,110 +9,114 @@ require 'rank'
 class TheRottenPirate
   def initialize
     @dvds = nil
+    @l = ForkLogger.new 
   end
   
   def self.execute
-    l = ForkLogger.new
     
-    trp = TheRottenPirate.new
-
-    l.puts "Searching..."
-    trp.fetch_new_dvds
-
-    l.puts "Filtering..."
     config = YAML.load(File.open('config.yml').read)
-    trp.filter_percentage config["filter_out_less_than_percentage"] if config["filter_out_less_than_percentage"]
-    trp.filter_out_non_certified if config["filter_out_non_certified"]
-    trp.filter_out_already_downloaded if config["filter_out_already_downloaded"]
+    captain = TheRottenPirate.new
+    output = captain.instance_variable_get(:@l)
+    captain.gather_and_filter_dvds config
     
-    dvd_results = []
-    downloads = []
+    full_analysis_results = []
+    torrents_to_download = []
     
-    l.puts "*" * 80
-    l.puts "Attempting to download the following titles: "
-    l.puts trp.dvds.map { |dvd| dvd["Title"] }
-    l.puts "*" * 80
+    captain.summarize_process_to_output
         
-    trp.dvds.each do |dvd|
-      l.puts "*" * 80
-      l.puts "Searching for #{dvd["Title"]}"
-      l.puts "*" * 80
+    captain.dvds.each do |dvd|
+      output.puts "*" * 80
+      output.puts "Searching for #{dvd["Title"]}"
+      output.puts "*" * 80
       search = PirateBay::Search.new Download.clean_title(dvd["Title"])
-      l.puts results = search.execute
+      results = search.execute
+      output.puts "Found #{results.size} results from the pirate bay."
+      
+      next if results.empty?
       
       if config["comments"]["analyze"]
+        num_to_analyze = config["comments"]["num_to_analyze"]
+        quality_level = config["comments"]["quality"] == "low" ? :init : :full
+        output.puts "Processing #{[num_to_analyze, results.size].min} torrent pages for comments (as configured)."        
         
-        results_to_analyze = config["comments"]["results_to_analyze"]
+        analysis_results = captain.analyze_results results, num_to_analyze, quality_level
+        analysis_results = analysis_results.sort_by { |r| -(r[:video][:rank]) }
         
-        if config["comments"]["quality"] == "low"
-          comment_quality = :init
-        else
-          comment_quality = :full
-        end
-        
-        if results.empty?
-          l.puts "There were no torrents found for #{dvd["Title"]}. Moving on now."
-          next
-        end
-        
-        results = results[0,results_to_analyze].map do |result|
-          url = "http://www.thepiratebay.org/torrent/#{result.id}/"
-          html = open(url).read
-          p = PirateBay::Details.new html, comment_quality
-          l.puts "Fetching comments results from #{url}"
-          result = { 
-            :seeds => result.seeds, 
-            :size => result.size, 
-            :name => result.name, 
-            :video => 
-              { 
-                :average=> p.video_quality_average, 
-                :sum => p.video_quality_score_sum,
-                :votes => p.video_scores.size,
-                :rank => Rank.new(p.video_scores).score
-              },
-            :audio => 
-              { 
-                :average=> p.audio_quality_average, 
-                :sum => p.audio_quality_score_sum,
-                :votes => p.audio_scores.size,
-                :rank => Rank.new(p.audio_scores).score
-              },
-            :url => url,
-            :link => result.link
-          } 
-          l.puts "Results: #{result.inspect}"
-          result
-        end
-        results = results.sort_by { |r| -(r[:video][:rank]) }
-        downloads << { :link => results.first[:link], :title => dvd["Title"] }
-        dvd_results << results
-        # now we have an array of results
-        # now we need to figure out an algorithm to download the best one?
+        torrents_to_download << { :link => analysis_results.first[:link], :title => dvd["Title"] }
+        full_analysis_results << analysis_results
+      else
+        torrents_to_download << { :link => results.first.link, :title => dvd["Title"] }
       end
     end
     
-    YAMLWriter.new({ :dvd_results => dvd_results, :links_to_download => downloads }).write
+    YAMLWriter.new({ :full_analysis_results => full_analysis_results, :links_to_download => torrents_to_download }).write
     
-    downloads.each do |download|
-      l.puts "Starting the download for #{download[:title]}"
+    torrents_to_download.each do |download|
+      output.puts "Starting the download for #{download[:title]}"
       if Download.torrent_from_url download[:link]
         Download.insert download[:title] 
-        l.puts "Download successfully started."
+        output.puts "Download successfully started."
       else
-        l.puts "Download failed while starting."
+        output.error "Download failed while starting."
       end
     end
 
-    l.puts "Done!"    
-    l.puts "Downloaded a total of #{downloads.size} torrents (disclaimer: did any downloads say they failed while starting?)"
+    output.puts "Done!"    
+    output.puts "Downloaded a total of #{torrents_to_download.size} torrents"
+  end
+  
+  def analyze_results results, num_to_analyze, quality_level
+    results = results[0,num_to_analyze].map do |result|
+      url = "http://www.thepiratebay.org/torrent/#{result.id}/"
+      html = open(url).read
+      p = PirateBay::Details.new html, quality_level
+      @l.puts "Fetching comments results from #{url}"
+      { 
+        :seeds => result.seeds, 
+        :size => result.size, 
+        :name => result.name, 
+        :video => 
+          { 
+            :average=> p.video_quality_average, 
+            :sum => p.video_quality_score_sum,
+            :votes => p.video_scores.size,
+            :rank => Rank.new(p.video_scores).score
+          },
+        :audio => 
+          { 
+            :average=> p.audio_quality_average, 
+            :sum => p.audio_quality_score_sum,
+            :votes => p.audio_scores.size,
+            :rank => Rank.new(p.audio_scores).score
+          },
+        :url => url,
+        :link => result.link
+      } 
+    end
+  end
+  
+  def gather_and_filter_dvds config
+    @l.puts "Searching..."
+    fetch_new_dvds
+
+    @l.puts "Filtering..."
+    filter_percentage config["filter_out_less_than_percentage"] if config["filter_out_less_than_percentage"]
+    filter_out_non_certified_fresh if config["filter_out_non_certified_fresh"]
+    filter_out_already_downloaded if config["filter_out_already_downloaded"]
+  end
+  
+  def summarize_process_to_output 
+    @l.puts "*" * 80
+    @l.puts "Attempting to download the following titles: "
+    @l.puts dvds.map { |dvd| dvd["Title"] }
+    @l.puts "*" * 80
   end
   
   def filter_out_already_downloaded
     @dvds = dvds.reject { |f| Download.exists? f["Title"] }
   end
   
-  def filter_out_non_certified
+  def filter_out_non_certified_fresh
     @dvds = dvds.select { |f| f["CertifiedFresh"] == "1" }
   end
 
