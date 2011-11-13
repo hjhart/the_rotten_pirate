@@ -1,8 +1,10 @@
 require 'fork_logger'
 require 'awesome_print'
 require 'yaml'
+require 'json_writer'
 require 'download'
 require 'torrent_api'
+require 'rank'
 
 class TheRottenPirate
   def initialize
@@ -19,12 +21,15 @@ class TheRottenPirate
     trp.filter_out_non_certified if config["filter_out_non_certified"]
     trp.filter_out_already_downloaded if config["filter_out_already_downloaded"]
     
+    dvd_results = []
+    downloads = []
+    
     trp.dvds.each do |dvd|
       l.puts "***" * 80
       l.puts "Searching for #{dvd["Title"]}"
       l.puts "***" * 80
       search = PirateBay::Search.new Download.clean_title(dvd["Title"])
-      l.puts ap results = search.execute
+      l.puts results = search.execute
       
       if config["comments"]["analyze"]
         
@@ -45,14 +50,43 @@ class TheRottenPirate
             :seeds => result.seeds, 
             :size => result.size, 
             :name => result.name, 
-            :video => p.video_quality_average, 
-            :audio => p.audio_quality_average, 
+            :video => 
+              { 
+                :average=> p.video_quality_average, 
+                :sum => p.video_quality_score_sum,
+                :votes => p.video_scores.size,
+                :rank => Rank.new(p.video_scores).score
+              },
+            :audio => 
+              { 
+                :average=> p.audio_quality_average, 
+                :sum => p.audio_quality_score_sum,
+                :votes => p.audio_scores.size,
+                :rank => Rank.new(p.audio_scores).score
+              },
             :url => url,
             :link => result.link
           } 
           l.puts "Results: #{result.inspect}"
           result
         end
+        results = results.sort_by { |r| -(r[:video][:rank]) }
+        downloads << { :link => results.first[:link], :title => dvd["Title"] }
+        dvd_results << results
+        # now we have an array of results
+        # now we need to figure out an algorithm to download the best one?
+      end
+    end
+    
+    JSONWriter.new({ :dvd_results => dvd_results, :links_to_download => downloads }).write
+    
+    downloads.each do |download|
+      l.puts "Starting the download for #{download[:title]}"
+      if Download.torrent_from_url download[:link]
+        Download.insert download[:title] 
+        l.puts "Download successfully started."
+      else
+        l.puts "Download failed while starting."
       end
     end
   end
