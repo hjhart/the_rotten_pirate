@@ -30,9 +30,10 @@ class Download
   def self.torrent_from_url url
     require 'net/http'
     
+    
     torrent_filename_match = url.match(/.*\/(.*)/)
     torrent_name = torrent_filename_match.nil? ? "tmp.torrent" : torrent_filename_match[1]
-    torrent_domain, torrent_uri = url.split('.org')
+    torrent_domain, torrent_uri = url.gsub(/https?:\/\//, '').split('.org')
     torrent_domain += '.org'
     
     FileUtils.mkdir_p File.join(self.download_directory)
