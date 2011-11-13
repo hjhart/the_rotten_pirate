@@ -88,7 +88,7 @@ Run `crontab -e` and paste the following into there to start a new cronjob. It w
 
 * Allow for import of top movies?
 	* Add more of http://www.rottentomatoes.com/help_desk/syndication_txt.php these
-* Have a method of deleting movies (or at least whiping the database clean)
-* I'm getting some Timeout::Errors when I'm downloading too many torrents at once. Can we catch those?
-* easily configurable cron jobs for getting the rake task to run. (but when does rotten tomatoes update their feeds?)
-* Don't bother to download if the quality isn't up to this rating.
+* Have a method of deleting movies (or at least wiping the database clean)
+* I'm getting some Timeout::Errors when I'm downloading too many torrents at once. Should we be catching those?
+* Figure out when the rotten tomatoes files update and configure the crontab to run at those times.
+* Don't bother to download if the quality isn't up to a configurable rating.
