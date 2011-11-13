@@ -47,5 +47,14 @@ describe Download do
       }.should_not raise_error
     end
   end
+  
+  describe "delete" do
+    it "should delete the download of the same name" do
+      Download.insert("Movie Title").should be_true
+      Download.exists?("Movie Title").should be_true
+      Download.delete("Movie Title").should eq 1
+      Download.delete("Movie Title").should eq 0
+    end
+  end
 end
    

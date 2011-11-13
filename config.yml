@@ -1,7 +1,7 @@
 ---
 filter_out_less_than_percentage: 85
 filter_out_non_certified_fresh: true
-filter_out_already_downloaded: true
+filter_out_already_downloaded: false
 comments:
     analyze: true
     quality: high # or low

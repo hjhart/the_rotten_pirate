@@ -81,7 +81,6 @@ Thanks to echoe, you can get a irb session loaded with the classes loaded inside
 
 ### Potential TODOS
 
-* Make sure if there are no ratings that first seeded wins (pretty sure this is already happening)
 * Allow for import of top movies?
 	* Add more of http://www.rottentomatoes.com/help_desk/syndication_txt.php these
 * Have a method of deleting movies (or at least whiping the database clean)
