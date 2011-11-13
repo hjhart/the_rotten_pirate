@@ -50,6 +50,7 @@ Edit the\_rotten\_pirate/config.yml
 	    analyze: true # Turn this off for faster querying.
 	    quality: high # or low
 	    results_to_analyze: 5 # Crank this up if you want to query more results comments. Maximum of 50 right now.
+	download_directory: tmp/torrents # can be relative to the current directory (as seen), or it can be from the home directory (e.g. ~/Torrents)
 	
 ## Run tests
 

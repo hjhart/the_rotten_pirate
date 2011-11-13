@@ -23,23 +23,24 @@ class Download
     config = YAML.load(File.open('config.yml').read)
     download_dir = config["download_directory"] || 'tmp/torrent'
     dirs = download_dir.strip.split('/')
-    File.join(dirs)
+    # This converts any relative home directories to one ruby likes better (osx only probably)
+    dirs.map { |dir| dir == "~" ? Dir.home : dir } 
   end
   
   def self.torrent_from_url url
-    require 'open-uri'
-    begin
-      torrent_match = url.match(/.*\/(.*)/)
-      torrent_name = torrent_match.nil? ? "tmp.torrent" : torrent_match[1]
-      FileUtils.mkdir_p('tmp/torrents')
-      filename = File.join("tmp/torrents/#{torrent_name}")
-      File.open(filename, 'w') { |f|
-        f.write open(url).read
-      }
-      true
-    rescue
-      false
-    end
+    require 'net/http'
     
+    torrent_filename_match = url.match(/.*\/(.*)/)
+    torrent_name = torrent_filename_match.nil? ? "tmp.torrent" : torrent_filename_match[1]
+    torrent_domain, torrent_uri = url.split('.org')
+    torrent_domain += '.org'
+    
+    FileUtils.mkdir_p File.join(self.download_directory)
+    filename = File.join(self.download_directory, torrent_name)
+
+    Net::HTTP.start(torrent_domain) do |http| 
+       resp = http.get(torrent_uri)
+       open(filename, "wb") { |file| file.write(resp.body) }
+    end
   end
 end

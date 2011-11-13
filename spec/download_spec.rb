@@ -39,5 +39,13 @@ describe Download do
       clean_title.should == "Harry Potter and the Deathly Hallows  Part 2"
     end
   end
+  
+  describe "torrent_from_url" do
+    it "should be able to download movies with square brackets in it's name" do
+      lambda {
+        Download.torrent_from_url "http://torrents.thepiratebay.org/6581033/Bad_Teacher[2011]R5_Line_XviD-ExtraTorrentRG.6581033.TPB.torrent"
+      }.should_not raise_error
+    end
+  end
 end
    

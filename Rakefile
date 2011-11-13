@@ -25,3 +25,9 @@ task :init_db do
     String :name
   end
 end
+
+task :execute do
+  $:.push 'lib'
+  require 'the_rotten_pirate'
+  TheRottenPirate.execute
+end
