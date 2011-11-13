@@ -76,3 +76,8 @@ Thanks to echoe, you can get a irb session loaded with the classes loaded inside
 Rotten Tomatoes -> The Rotten Pirate -> Download torrents to a directory -> Torrent program watching directory begins download.
 
 
+## Potential TODOS
+
+Don't bother taking the time requesting comments from the pirate bay if there is less than (some configurable amount) number of seeds
+Make sure if there are no ratings that first seeded wins (pretty sure this is already happening)
+Allow for import of top movies?
