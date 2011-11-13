@@ -1,7 +1,7 @@
 require 'fork_logger'
 require 'awesome_print'
 require 'yaml'
-require 'json_writer'
+require 'yaml_writer'
 require 'download'
 require 'torrent_api'
 require 'rank'
@@ -78,7 +78,7 @@ class TheRottenPirate
       end
     end
     
-    JSONWriter.new({ :dvd_results => dvd_results, :links_to_download => downloads }).write
+    YAMLWriter.new({ :dvd_results => dvd_results, :links_to_download => downloads }).write
     
     downloads.each do |download|
       l.puts "Starting the download for #{download[:title]}"
