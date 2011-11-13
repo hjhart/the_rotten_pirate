@@ -1,9 +1,10 @@
 ---
-filter_out_less_than_percentage: 90
+filter_out_less_than_percentage: 85
 filter_out_non_certified_fresh: true
 filter_out_already_downloaded: true
 comments:
     analyze: true
     quality: high # or low
     num_to_analyze: 9
+    minimum_seeds: 50
 download_directory: ~/Torrents

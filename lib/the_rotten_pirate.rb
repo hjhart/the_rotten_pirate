@@ -36,10 +36,12 @@ class TheRottenPirate
       
       if config["comments"]["analyze"]
         num_to_analyze = config["comments"]["num_to_analyze"]
+        minimum_seeds = config["comments"]["minimum_seeds"]
+        
         quality_level = config["comments"]["quality"] == "low" ? :init : :full
         output.puts "Processing #{[num_to_analyze, results.size].min} torrent pages for comments (as configured)."        
         
-        analysis_results = captain.analyze_results results, num_to_analyze, quality_level
+        analysis_results = captain.analyze_results results, num_to_analyze, quality_level, minimum_seeds
         analysis_results = analysis_results.sort_by { |r| -(r[:video][:rank]) }
         
         torrents_to_download << { :link => analysis_results.first[:link], :title => dvd["Title"] }
@@ -65,34 +67,49 @@ class TheRottenPirate
     output.puts "Downloaded a total of #{torrents_to_download.size} torrents"
   end
   
-  def analyze_results results, num_to_analyze, quality_level
+  def analyze_results results, num_to_analyze, quality_level, minimum_seeds
     results = results[0,num_to_analyze].map do |result|
       url = "http://www.thepiratebay.org/torrent/#{result.id}/"
-      html = open(url).read
-      p = PirateBay::Details.new html, quality_level
-      @l.puts "Fetching comments results from #{url}"
-      { 
-        :seeds => result.seeds, 
-        :size => result.size, 
-        :name => result.name, 
-        :video => 
-          { 
-            :average=> p.video_quality_average, 
-            :sum => p.video_quality_score_sum,
-            :votes => p.video_scores.size,
-            :rank => Rank.new(p.video_scores).score
-          },
-        :audio => 
-          { 
-            :average=> p.audio_quality_average, 
-            :sum => p.audio_quality_score_sum,
-            :votes => p.audio_scores.size,
-            :rank => Rank.new(p.audio_scores).score
-          },
-        :url => url,
-        :link => result.link
-      } 
+
+      if result.seeds < minimum_seeds
+        @l.puts "Number of seeds are lower than the threshold - not querying for comments."
+        construct_result_hash result, url
+      else
+        html = open(url).read
+        details = PirateBay::Details.new html, quality_level
+        @l.puts "Fetching comments results from #{url}"
+        construct_result_hash result, url, details
+      end
     end
+  end
+  
+  def construct_result_hash result, url, details=nil
+    if details.nil?
+      video_average = 0
+      video_sum = 0
+      video_votes = 0
+      video_rank = 0
+    else
+      video_average = details.video_quality_average
+      video_sum = details.video_quality_average
+      video_votes = details.video_scores.size
+      video_rank = Rank.new(details.video_scores).score
+    end
+      
+    { 
+      :seeds => result.seeds, 
+      :size => result.size, 
+      :name => result.name, 
+      :video => 
+        { 
+          :average=> video_average, 
+          :sum => video_sum,
+          :votes => video_votes,
+          :rank => video_rank
+        },
+      :url => url,
+      :link => result.link
+    } 
   end
   
   def gather_and_filter_dvds config

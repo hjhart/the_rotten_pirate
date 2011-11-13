@@ -55,6 +55,10 @@ If this is turned on The Rotten Pirate will query the comments on The Pirate Bay
 
 The number of search results to query for comments. If there are 30 search results from pirate bay, but you only want to query the top 10 seeded torrents for comments – use this variable.
 
+* `["comments"]["minimum_seeds"]`
+
+Don't query for comments unless there are this many seeds on the torrent (there are hardly any comments for lower seeded torrents)
+
 ### Run the process!
 
 	rake execute
@@ -77,11 +81,10 @@ Thanks to echoe, you can get a irb session loaded with the classes loaded inside
 
 ### Potential TODOS
 
-Don't bother taking the time requesting comments from the pirate bay if there is less than (some configurable amount) number of seeds
-Make sure if there are no ratings that first seeded wins (pretty sure this is already happening)
-Allow for import of top movies?
-Add more of http://www.rottentomatoes.com/help_desk/syndication_txt.php these
-Have a method of deleting movies (or at least whiping the database clean)
-I'm getting some Timeout::Errors when I'm downloading too many torrents at once. Can we catch those?
-cron jobs for getting the rake task to run.
-Don't bother to download if the quality isn't up to this rating.
+* Make sure if there are no ratings that first seeded wins (pretty sure this is already happening)
+* Allow for import of top movies?
+	* Add more of http://www.rottentomatoes.com/help_desk/syndication_txt.php these
+* Have a method of deleting movies (or at least whiping the database clean)
+* I'm getting some Timeout::Errors when I'm downloading too many torrents at once. Can we catch those?
+* easily configurable cron jobs for getting the rake task to run. (but when does rotten tomatoes update their feeds?)
+* Don't bother to download if the quality isn't up to this rating.
