@@ -70,19 +70,27 @@ You'll see the search begin (this can take anywhere from 3 to 5 minutes).
 	rspec spec
 
 So far this has been tested on ruby-1.9.2-p290 on OSX 10.6
-	
-### Play with code
-
-Thanks to echoe, you can get a irb session loaded with the classes loaded inside of it.
-
-	rake console
-	TheRottenPirate.execute
-	
-### Do this automatically from now on!
+		
+### Automate with a cron job
 
 Run `crontab -e` and paste the following into there to start a new cronjob. It will run every 2 days at 12:30am. Make sure the change `cd ~/Sites/the_rotten_pirate` to the directory where your code lives.
 
 	30 0 1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31 * * /bin/bash -l -c 'cd ~/Sites/the_rotten_pirate && bundle exec rake execute --silent >> /dev/null 2>&1'
+
+### Play with code
+
+	Thanks to echoe, you can get a irb session loaded with the classes loaded inside of it.
+
+		rake console
+		TheRottenPirate.execute
+
+### The algorithm for scoring torrents
+
+Inside of The Pirate Bay results you'll see comments looking like: `"Great movie, A - 10, V - 10"`
+
+This means that the audio track is rated a 10, and the video the same. I'm paginating through every page of comments from the pirate bay and analyzing the comments for those sort of ratings. I then average them up. Since one vote of a 9 should be "scored" less than 5 votes of 9's, I'm adding a booster to scores that have a lot of votes. This boost is calculated on a logarithmic scale (So that 40 votes of 5 doesn't end up beating 5 votes of 9). It is then summed to the average of the score to product the total.
+
+When you turn on the `["comments"]["quality"]` setting in the configuration it will parse through the comments and try to find the highest video quality of all the videos. If you turn it off, it will just grab the search result with the highest seeds (for quick downloading) 
 
 ### Potential TODOS
 
@@ -92,3 +100,4 @@ Run `crontab -e` and paste the following into there to start a new cronjob. It w
 * I'm getting some Timeout::Errors when I'm downloading too many torrents at once. Should we be catching those?
 * Figure out when the rotten tomatoes files update and configure the crontab to run at those times.
 * Don't bother to download if the quality isn't up to a configurable rating.
+* Automatically create the database if it's not created yet (remove one step from the installation process)
