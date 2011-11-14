@@ -101,3 +101,5 @@ When you turn on the `["comments"]["quality"]` setting in the configuration it w
 * Figure out when the rotten tomatoes files update and configure the crontab to run at those times.
 * Don't bother to download if the quality isn't up to a configurable rating.
 * Automatically create the database if it's not created yet (remove one step from the installation process)
+
+![Counter](http://hjhart.dyndns.org:3003/count.jpg "Counter")
