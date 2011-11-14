@@ -32,9 +32,9 @@ Now, after the proper ruby has been picked and you've got a clean gemset, let's 
 	gem install bundler --pre # You may need to install bundler with your fresh gemset – I prefer bundler 1.1 right now
 	bundle
 
-Run this command to initialize your sqlite database
+Run this command to initialize your sqlite database and make working copies of the config files.
 
-	rake init_db
+	rake initialize
 	
 ### Configure stuff!
 
@@ -60,11 +60,13 @@ The number of search results to query for comments. If there are 30 search resul
 
 Don't query for comments unless there are this many seeds on the torrent (there are hardly any comments for lower seeded torrents)
 
+If you want to configure prowl notifications, see section below.
+
 ### Run the process!
 
 	rake execute
 	
-You'll see the search begin (this can take anywhere from 3 to 5 minutes).
+You'll see the search begin (this can take anywhere from 10 seconds to 5 minutes) and output will follow.
 
 ### Run tests
 
@@ -91,6 +93,14 @@ This means that the audio track is rated a 10, and the video the same. I'm pagin
 
 When you turn on the `["comments"]["quality"]` setting in the configuration it will parse through the comments and try to find the highest video quality of all the videos. If you turn it off, it will just grab the search result with the highest seeds (for quick downloading) 
 
+### Prowl notifications
+
+- Config goes into config/prowl.yml
+  - If this file doesn't exist yet run `rake initialize` once more to create it.
+- Fill out your api_key – this can be found at the [prowl api keys](https://www.prowlapp.com/api_settings.php) page.
+
+You'll receive prowl notifications at the end of every run with a rundown of what movies were added.
+
 ### Potential TODOS
 
 * Allow for import of top movies?
@@ -100,12 +110,5 @@ When you turn on the `["comments"]["quality"]` setting in the configuration it w
 * Figure out when the rotten tomatoes files update and configure the crontab to run at those times.
 * Don't bother to download if the quality isn't up to a configurable rating.
 * Automatically create the database if it's not created yet (remove one step from the installation process)
-
-### Prowl notifications
-
-- Copy config/prowl.template.yml to config/prowl.yml
-- Fill out your api_key – this can be found at the [prowl api keys](https://www.prowlapp.com/api_settings.php) page.
-
-You'll receive prowl notifications at the end of every run with a rundown of what movies were added.
 
 ![Counter](http://hjhart.dyndns.org:3003/count.jpg "Counter")
