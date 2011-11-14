@@ -65,6 +65,7 @@ class TheRottenPirate
 
     output.puts "Done!"    
     output.puts "Downloaded a total of #{torrents_to_download.size} torrents"
+    output.prowl_message "Downloaded #{torrents_to_download.size} movies", torrents_to_download.map{|m| m[:title] }.join(", ")
   end
   
   def analyze_results results, num_to_analyze, quality_level, minimum_seeds

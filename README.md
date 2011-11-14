@@ -14,6 +14,7 @@
    - Selects the highest scoring torrent and
  - Then it downloads the appropriate torrents to your configured directory
    - If you set this directory up to be "watched" by your torrent program these will start automatically!
+ - Prowl support to send push notifications to iOS!
 
 Pretty neat, yeah?
 
@@ -99,5 +100,12 @@ When you turn on the `["comments"]["quality"]` setting in the configuration it w
 * Figure out when the rotten tomatoes files update and configure the crontab to run at those times.
 * Don't bother to download if the quality isn't up to a configurable rating.
 * Automatically create the database if it's not created yet (remove one step from the installation process)
+
+### Prowl notifications
+
+- Copy config/prowl.template.yml to config/prowl.yml
+- Fill out your api_key – this can be found at the [prowl api keys](https://www.prowlapp.com/api_settings.php) page.
+
+You'll receive prowl notifications at the end of every run with a rundown of what movies were added.
 
 ![Counter](http://hjhart.dyndns.org:3003/count.jpg "Counter")

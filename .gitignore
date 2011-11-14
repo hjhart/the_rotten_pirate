@@ -1,3 +1,4 @@
 db/*
 tmp/*
 logs/*
+config/prowl.yml
