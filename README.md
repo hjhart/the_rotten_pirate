@@ -79,16 +79,14 @@ Run `crontab -e` and paste the following into there to start a new cronjob. It w
 
 ### Play with code
 
-	Thanks to echoe, you can get a irb session loaded with the classes loaded inside of it.
-
-		rake console
-		TheRottenPirate.execute
+	rake console
+	TheRottenPirate.execute
 
 ### The algorithm for scoring torrents
 
 Inside of The Pirate Bay results you'll see comments looking like: `"Great movie, A - 10, V - 10"`
 
-This means that the audio track is rated a 10, and the video the same. I'm paginating through every page of comments from the pirate bay and analyzing the comments for those sort of ratings. I then average them up. Since one vote of a 9 should be "scored" less than 5 votes of 9's, I'm adding a booster to scores that have a lot of votes. This boost is calculated on a logarithmic scale (So that 40 votes of 5 doesn't end up beating 5 votes of 9). It is then summed to the average of the score to product the total.
+This means that the audio track is rated a 10, and the video the same. I'm paginating through every page of comments from the pirate bay and analyzing the comments for those sort of ratings. I then average them up. Since one vote of a 9 should be "scored" less than 5 votes of 9's, I'm adding a booster to scores that have a lot of votes. This boost is calculated on a logarithmic scale (So that 40 votes of 5 doesn't end up beating 5 votes of 9). The boost is then summed to the average rating to produce the total.
 
 When you turn on the `["comments"]["quality"]` setting in the configuration it will parse through the comments and try to find the highest video quality of all the videos. If you turn it off, it will just grab the search result with the highest seeds (for quick downloading) 
 
