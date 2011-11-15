@@ -111,4 +111,10 @@ You'll receive prowl notifications at the end of every run with a rundown of wha
 * Don't bother to download if the quality isn't up to a configurable rating.
 * Automatically create the database if it's not created yet (remove one step from the installation process)
 
+### Support
+
+Tested on ruby 1.9.2-p290 on Mac OSX.
+Also tested on ruby 1.8.7-p330 on Mac OSX.
+
+
 ![Counter](http://hjhart.dyndns.org:3003/count.jpg "Counter")
