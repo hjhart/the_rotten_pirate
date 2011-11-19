@@ -4,6 +4,7 @@ require 'yaml'
 require 'yaml_writer'
 require 'download'
 require 'torrent_api'
+require 'name_cleaner'
 require 'rank'
 
 class TheRottenPirate
