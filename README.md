@@ -103,13 +103,21 @@ You'll receive prowl notifications at the end of every run with a rundown of wha
 
 ### Potential TODOS
 
+* Can we search for movies on Amazon/Netflix for instant streaming or purchase?
+* Add the ability to organize your files. So, drop the subtitles and the other movie files into another directory.
+* Download a single movie rake download "Revenge of the Nerds"
+* Generate a little summary of movies that were fetched
+	* Synapsis
+	* Link to trailer
+	* Link to watch the movie
+	* Show any screenshots of the movie if they have any
+	* Links to download subtitles (if it's a foreign movie?)
 * Allow for import of top movies?
 	* Add more of http://www.rottentomatoes.com/help_desk/syndication_txt.php these
 * Have a method of deleting movies (or at least wiping the database clean)
 * I'm getting some Timeout::Errors when I'm downloading too many torrents at once. Should we be catching those?
-* Figure out when the rotten tomatoes files update and configure the crontab to run at those times.
+* Figure out when the rotten tomatoes files update and configure the crontab to run at those times. (DVDS generally come out on Tuesdays, but in some cases they are done other days (e.g. Harry Potter, Twilight, etc...)
 * Don't bother to download if the quality isn't up to a configurable rating.
-* Automatically create the database if it's not created yet (remove one step from the installation process)
 
 ### Support
 
