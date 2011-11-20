@@ -9,16 +9,43 @@ require 'rank'
 
 class TheRottenPirate
   def initialize
+    @config = YAML.load(File.open('config/config.yml').read)
     @dvds = nil
     @l = ForkLogger.new 
   end
   
-  def self.execute
+  def search_for_dvd(title, full_analysis=[])
+    @l.puts "*" * 80
+    @l.puts "Searching for #{title}"
+    @l.puts "*" * 80
+    search = PirateBay::Search.new Download.clean_title(title)
+    results = search.execute
+    @l.puts "Found #{results.size} results from the pirate bay."
     
-    config = YAML.load(File.open('config/config.yml').read)
+    return if results.empty?
+    
+    if @config["comments"]["analyze"]
+      num_to_analyze = @config["comments"]["num_to_analyze"]
+      minimum_seeds = @config["comments"]["minimum_seeds"]
+      
+      quality_level = @config["comments"]["quality"] == "low" ? :init : :full
+      @l.puts "Processing #{[num_to_analyze, results.size].min} torrent pages for comments (as configured)."        
+      
+      analysis_results = analyze_results results, num_to_analyze, quality_level, minimum_seeds
+      analysis_results = analysis_results.sort_by { |r| -(r[:video][:rank]) }
+      
+      [{ :link => analysis_results.first[:link], :title => title }, analysis_results]
+    else
+      { :link => results.first.link, :title => title }
+    end
+  end
+    
+  
+  def self.execute
+
     captain = TheRottenPirate.new
     output = captain.instance_variable_get(:@l)
-    captain.gather_and_filter_dvds config
+    captain.gather_and_filter_dvds
     
     full_analysis_results = []
     torrents_to_download = []
@@ -26,30 +53,9 @@ class TheRottenPirate
     captain.summarize_process_to_output
         
     captain.dvds.each do |dvd|
-      output.puts "*" * 80
-      output.puts "Searching for #{dvd["Title"]}"
-      output.puts "*" * 80
-      search = PirateBay::Search.new Download.clean_title(dvd["Title"])
-      results = search.execute
-      output.puts "Found #{results.size} results from the pirate bay."
-      
-      next if results.empty?
-      
-      if config["comments"]["analyze"]
-        num_to_analyze = config["comments"]["num_to_analyze"]
-        minimum_seeds = config["comments"]["minimum_seeds"]
-        
-        quality_level = config["comments"]["quality"] == "low" ? :init : :full
-        output.puts "Processing #{[num_to_analyze, results.size].min} torrent pages for comments (as configured)."        
-        
-        analysis_results = captain.analyze_results results, num_to_analyze, quality_level, minimum_seeds
-        analysis_results = analysis_results.sort_by { |r| -(r[:video][:rank]) }
-        
-        torrents_to_download << { :link => analysis_results.first[:link], :title => dvd["Title"] }
-        full_analysis_results << analysis_results
-      else
-        torrents_to_download << { :link => results.first.link, :title => dvd["Title"] }
-      end
+      torrent_to_download, full_analysis_result = captain.search_for_dvd(dvd["Title"])
+      torrents_to_download << torrent_to_download
+      full_analysis_results << full_analysis_result
     end
     
     YAMLWriter.new({ :full_analysis_results => full_analysis_results, :links_to_download => torrents_to_download }).write
@@ -93,7 +99,7 @@ class TheRottenPirate
       video_rank = 0
     else
       video_average = details.video_quality_average
-      video_sum = details.video_quality_average
+      video_sum = details.video_quality_score_sum
       video_votes = details.video_scores.size
       video_rank = Rank.new(details.video_scores).score
     end
@@ -114,14 +120,14 @@ class TheRottenPirate
     } 
   end
   
-  def gather_and_filter_dvds config
+  def gather_and_filter_dvds
     @l.puts "Searching..."
     fetch_new_dvds
 
     @l.puts "Filtering..."
-    filter_percentage config["filter_out_less_than_percentage"] if config["filter_out_less_than_percentage"]
-    filter_out_non_certified_fresh if config["filter_out_non_certified_fresh"]
-    filter_out_already_downloaded if config["filter_out_already_downloaded"]
+    filter_percentage @config["filter_out_less_than_percentage"] if @config["filter_out_less_than_percentage"]
+    filter_out_non_certified_fresh if @config["filter_out_non_certified_fresh"]
+    filter_out_already_downloaded if @config["filter_out_already_downloaded"]
   end
   
   def summarize_process_to_output 

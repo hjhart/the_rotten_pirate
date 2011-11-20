@@ -68,6 +68,12 @@ If you want to configure prowl notifications, see section below.
 	
 You'll see the search begin (this can take anywhere from 10 seconds to 5 minutes) and output will follow.
 
+### Download a Single Movie
+
+	rake download["The Big Lebowski"]
+	
+This will run the search operation as configured – and download a single torrent file.
+
 ### Run tests
 
 	rspec spec
@@ -103,6 +109,7 @@ You'll receive prowl notifications at the end of every run with a rundown of wha
 
 ### Potential TODOS
 
+* Name parser that will take downloaded files and tidy them up!
 * Can we search for movies on Amazon/Netflix for instant streaming or purchase?
 * Add the ability to organize your files. So, drop the subtitles and the other movie files into another directory.
 * Download a single movie rake download "Revenge of the Nerds"
@@ -118,6 +125,7 @@ You'll receive prowl notifications at the end of every run with a rundown of wha
 * I'm getting some Timeout::Errors when I'm downloading too many torrents at once. Should we be catching those?
 * Figure out when the rotten tomatoes files update and configure the crontab to run at those times. (DVDS generally come out on Tuesdays, but in some cases they are done other days (e.g. Harry Potter, Twilight, etc...)
 * Don't bother to download if the quality isn't up to a configurable rating.
+* Database file needs to be not a relative directory. Running specs outside of the root folder fails.
 
 ### Support
 

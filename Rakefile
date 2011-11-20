@@ -44,3 +44,24 @@ task :execute do
   require 'the_rotten_pirate'
   TheRottenPirate.execute
 end
+
+desc "This task will download a single movie" 
+
+task :download, :movie do |t, args|
+  movie = args[:movie]
+  
+  abort "You must specify a movie to download: rake download[\"The Lion King\"]" if movie.nil?
+  
+  $:.push 'lib'
+  require 'the_rotten_pirate'
+  trp = TheRottenPirate.new
+  torrent_to_download, full_results = trp.search_for_dvd movie
+  puts "Starting the download for #{torrent_to_download[:title]}"
+  if Download.torrent_from_url torrent_to_download[:link]
+    Download.insert torrent_to_download[:title] 
+    puts "Download successfully started."
+  else
+    exit("Download failed while starting.")
+  end
+  
+end
