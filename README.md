@@ -15,6 +15,7 @@
  - Then it downloads the appropriate torrents to your configured directory
    - If you set this directory up to be "watched" by your torrent program these will start automatically!
  - Prowl support to send push notifications to iOS!
+ - Also, command line interface to download any single movie you want (e.g. rake download["The Big Lebowski"])
 
 Pretty neat, yeah?
 
