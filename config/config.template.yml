@@ -8,3 +8,4 @@ comments:
     num_to_analyze: 10
     minimum_seeds: 50
 download_directory: ~/Torrents
+rottentomatoes_rss_url: http://www.rottentomatoes.com/syndication/tab/new_releases.txt
