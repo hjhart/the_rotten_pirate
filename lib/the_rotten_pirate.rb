@@ -54,8 +54,8 @@ class TheRottenPirate
         
     captain.dvds.each do |dvd|
       torrent_to_download, full_analysis_result = captain.search_for_dvd(dvd["Title"])
-      torrents_to_download << torrent_to_download
-      full_analysis_results << full_analysis_result
+      torrents_to_download << torrent_to_download unless torrent_to_download.nil?
+      full_analysis_results << full_analysis_result unless full_analysis_result.nil?
     end
     
     YAMLWriter.new({ :full_analysis_results => full_analysis_results, :links_to_download => torrents_to_download }).write
