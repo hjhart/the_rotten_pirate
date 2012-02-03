@@ -56,6 +56,7 @@ task :download, :movie do |t, args|
   require 'the_rotten_pirate'
   trp = TheRottenPirate.new
   torrent_to_download, full_results = trp.search_for_dvd movie
+  return if torrent_to_download.nil?
   puts "Starting the download for #{torrent_to_download[:title]}"
   if Download.torrent_from_url torrent_to_download[:link]
     Download.insert torrent_to_download[:title] 

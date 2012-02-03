@@ -77,7 +77,7 @@ class TheRottenPirate
   
   def analyze_results results, num_to_analyze, quality_level, minimum_seeds
     results = results[0,num_to_analyze].map do |result|
-      url = "http://www.thepiratebay.org/torrent/#{result.id}/"
+      url = "http://www.thepiratebay.se/torrent/#{result.id}/"
 
       if result.seeds < minimum_seeds
         @l.puts "Number of seeds are lower than the threshold - not querying for comments."

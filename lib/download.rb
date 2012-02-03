@@ -37,12 +37,12 @@ class Download
     
     torrent_filename_match = url.match(/.*\/(.*)/)
     torrent_name = torrent_filename_match.nil? ? "tmp.torrent" : torrent_filename_match[1]
-    torrent_domain, torrent_uri = url.gsub(/https?:\/\//, '').split('.org')
-    torrent_domain += '.org'
+    torrent_domain, torrent_uri = url.gsub(/https?:\/\//, '').split('.se')
+    torrent_domain += '.se'
     
     FileUtils.mkdir_p File.join(self.download_directory)
     filename = File.join(self.download_directory, torrent_name)
-
+    puts torrent_domain
     Net::HTTP.start(torrent_domain) do |http| 
        resp = http.get(torrent_uri)
        open(filename, "wb") { |file| file.write(resp.body) }
