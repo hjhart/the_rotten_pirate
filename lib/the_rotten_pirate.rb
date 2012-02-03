@@ -77,6 +77,7 @@ class TheRottenPirate
   
   def analyze_results results, num_to_analyze, quality_level, minimum_seeds
     results = results[0,num_to_analyze].map do |result|
+      @l.puts "Analyzing #{result.name}."
       url = "http://www.thepiratebay.org/torrent/#{result.id}/"
 
       if result.seeds < minimum_seeds
@@ -85,7 +86,7 @@ class TheRottenPirate
       else
         html = open(url).read
         details = PirateBay::Details.new html, quality_level
-        @l.puts "Fetching comments results from #{url}"
+        @l.puts "Fetching comments results from #{url} with name: #{result.name} ."
         construct_result_hash result, url, details
       end
     end

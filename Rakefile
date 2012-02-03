@@ -9,6 +9,7 @@ desc "Creates the initial database for storing movie downloads and missing confi
 task :initialize do
   
   require "sequel"
+  require "rubygems"
   
   FileUtils.mkdir_p('db')
   DB = Sequel.sqlite('db/downloads.sqlite')
