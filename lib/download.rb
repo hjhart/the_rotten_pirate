@@ -21,6 +21,7 @@ class Download
   
   def self.clean_title movie_title
     movie_title.gsub(/-/, '')
+    movie_title.gsub(/\//, '_')
   end
   
   def self.download_directory
