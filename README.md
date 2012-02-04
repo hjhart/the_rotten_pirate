@@ -61,6 +61,10 @@ The number of search results to query for comments. If there are 30 search resul
 
 Don't query for comments unless there are this many seeds on the torrent (there are hardly any comments for lower seeded torrents)
 
+* `[+rottentomatoes_rss_url]`
+
+The URL to fetch the feed from.  See: http://www.rottentomatoes.com/help_desk/syndication_txt.php
+
 If you want to configure prowl notifications, see section below.
 
 ### Run the process!

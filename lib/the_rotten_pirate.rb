@@ -155,7 +155,8 @@ class TheRottenPirate
   
   def fetch_new_dvds
     require 'open-uri'
-    text = open('http://www.rottentomatoes.com/syndication/tab/new_releases.txt').read
+    rss_url = @config["rottentomatoes_rss_url"]
+    text = open(rss_url).read
     @dvds = TheRottenPirate.extract_new_dvds text
   end
   
