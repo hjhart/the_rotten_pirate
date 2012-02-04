@@ -51,20 +51,9 @@ task :download_from_watch_file do
   require 'the_rotten_pirate'
   trp = TheRottenPirate.new
   filename = '/Users/jhart/Sites/the_mobile_pirate/movies_to_download.txt'
+  
   File.open(filename, 'r').each do |movie_title|
-    
-    torrent_to_download, full_results = trp.search_for_dvd movie_title
-    if torrent_to_download.nil? 
-      puts "No results found for #{movie_title}"
-      next 
-    end
-    puts "Starting the download for #{movie_title}"
-    if Download.torrent_from_url torrent_to_download[:link]
-      Download.insert torrent_to_download[:title] 
-      puts "Download successfully started."
-    else
-      exit("Download failed while starting.")
-    end
+    trp.initialize_download movie_title
   end
   
   File.open(filename, 'w') {} # truncate file
@@ -81,14 +70,6 @@ task :download, :movie do |t, args|
   $:.push 'lib'
   require 'the_rotten_pirate'
   trp = TheRottenPirate.new
-  torrent_to_download, full_results = trp.search_for_dvd movie
-  return if torrent_to_download.nil?
-  puts "Starting the download for #{torrent_to_download[:title]}"
-  if Download.torrent_from_url torrent_to_download[:link]
-    Download.insert torrent_to_download[:title] 
-    puts "Download successfully started."
-  else
-    exit("Download failed while starting.")
-  end
+  trp.initialize_download movie
   
 end

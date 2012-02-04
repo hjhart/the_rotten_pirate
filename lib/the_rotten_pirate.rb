@@ -14,6 +14,21 @@ class TheRottenPirate
     @l = ForkLogger.new 
   end
   
+  def initialize_download movie_title
+    torrent_to_download, full_results = search_for_dvd movie_title
+    if torrent_to_download.nil? 
+      puts "No results found for #{movie_title}"
+      return
+    end
+    puts "Starting the download for #{movie_title}"
+    if Download.torrent_from_url torrent_to_download[:link]
+      Download.insert torrent_to_download[:title] 
+      puts "Download successfully started."
+    else
+      exit("Download failed while starting.")
+    end
+  end
+  
   def search_for_dvd(title, full_analysis=[])
     @l.puts "*" * 80
     @l.puts "Searching for #{title}"
