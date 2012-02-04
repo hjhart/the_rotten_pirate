@@ -42,7 +42,6 @@ class Download
     
     FileUtils.mkdir_p File.join(self.download_directory)
     filename = File.join(self.download_directory, torrent_name)
-    puts torrent_domain
     Net::HTTP.start(torrent_domain) do |http| 
        resp = http.get(torrent_uri)
        open(filename, "wb") { |file| file.write(resp.body) }
