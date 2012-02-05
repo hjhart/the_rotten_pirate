@@ -8,6 +8,8 @@ require 'name_cleaner'
 require 'rank'
 
 class TheRottenPirate
+  attr_reader :config
+  
   def initialize
     @config = YAML.load(File.open('config/config.yml').read)
     @dvds = nil

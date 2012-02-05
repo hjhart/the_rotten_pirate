@@ -61,6 +61,10 @@ The number of search results to query for comments. If there are 30 search resul
 
 Don't query for comments unless there are this many seeds on the torrent (there are hardly any comments for lower seeded torrents)
 
+* `["comments"]["watch_file"]`
+
+You can point this towards a new-line delimited file – it will download each movie that is listed in the file. (Really nice with the  side-project [the_mobile_pirate](https://github.com/hjhart/the_mobile_pirate))
+
 If you want to configure prowl notifications, see section below.
 
 ### Run the process!
@@ -74,6 +78,13 @@ You'll see the search begin (this can take anywhere from 10 seconds to 5 minutes
 	rake download["The Big Lebowski"]
 	
 This will run the search operation as configured – and download a single torrent file.
+
+
+### Download an Array of Movies
+
+	rake download_from_watch_file
+	
+This will run against any text file that is new-line delimited. Parses through the file and downloads each movie. Really a nice to have with [the_mobile_pirate](https://github.com/hjhart/the_mobile_pirate). 
 
 ### Run tests
 

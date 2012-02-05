@@ -50,7 +50,11 @@ task :download_from_watch_file do
   $:.push 'lib'
   require 'the_rotten_pirate'
   trp = TheRottenPirate.new
-  filename = '/Users/jhart/Sites/the_mobile_pirate/movies_to_download.txt'
+  filename = trp.config['watch_file']
+  if filename.nil?
+    puts "There was no filename specified in the config file" 
+    return
+  end
   
   File.open(filename, 'r').each do |movie_title|
     trp.initialize_download movie_title
