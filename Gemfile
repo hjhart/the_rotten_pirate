@@ -5,7 +5,7 @@ group :test do
 	gem 'awesome_print'
 end
 	
-gem 'torrent_api', '0.2.6'
+gem 'torrent_api', '0.2.7'
 gem 'sequel', '~>3.2'
 gem 'sqlite3', '~>1.3'
 gem 'whenever'
