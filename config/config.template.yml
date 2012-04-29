@@ -9,3 +9,4 @@ comments:
     minimum_seeds: 50
 download_directory: ~/Torrents
 watch_file: /Users/admin/Sites/the_mobile_pirate/movies_to_download.txt
+youtube_api_key: it's a secret!

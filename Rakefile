@@ -57,6 +57,7 @@ task :download_from_watch_file do
   end
   
   File.open(filename, 'r').each do |movie_title|
+    
     trp.initialize_download movie_title
   end
   

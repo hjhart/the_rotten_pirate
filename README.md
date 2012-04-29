@@ -146,3 +146,10 @@ Also tested on ruby 1.8.7-p330 on Mac OSX.
 
 
 ![Counter](http://hjhart.dyndns.org:3003/count.jpg "Counter")
+
+
+### added another column to the database
+
+	ALTER TABLE downloads
+	 ADD youtube_url varchar2(255)
+	 ADD thumbnail_url varchar2(255)

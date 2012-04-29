@@ -1,0 +1,3 @@
+<% @movies.each do |movie| %>
+  <div class="span3"><a href="<%= movie[:youtube_url] %>"><img src="<%= movie[:thumbnail_url] %>"/><br/><%= movie[:name] %></a></div>
+<% end %>

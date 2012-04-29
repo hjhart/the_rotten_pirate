@@ -26,6 +26,7 @@ class TheRottenPirate
     if Download.torrent_from_url torrent_to_download[:link]
       Download.insert torrent_to_download[:title] 
       puts "Download successfully started."
+      torrent_to_download[:link]
     else
       exit("Download failed while starting.")
     end

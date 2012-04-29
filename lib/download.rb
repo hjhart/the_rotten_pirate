@@ -5,6 +5,24 @@ class Download
     Sequel.sqlite('db/downloads.sqlite')
   end
   
+  def self.all
+    connection[:downloads]
+  end
+  
+  def self.migrate_youtube_url
+    begin
+      db = connection
+      db[:downloads]
+    rescue SQLite3::SQLException
+      
+    end
+  end
+  
+  def self.add_youtube_url name, url
+    db = connection
+    db[:downloads].filter(:name => name).update(:youtube_url => url)
+  end
+  
   def self.exists? name
     db = connection
     !!(db[:downloads].filter(:name => name).first)
