@@ -8,6 +8,8 @@
    - Only "Certified Fresh" movies
    - Only movies whose "TomatoMeter Percent" is greater than XX%
    - Movies not already downloaded through TRP
+ - Web interface that allows you to start a download for any movie
+   - View most recently downloaded movies and view youtube trailers
  - We then pass the movies to the [torrent_api](https://github.com/hjhart/torrent_api) gem.
    - The gem looks at comments left by users for ratings of audio and video
    - Performs an average of all ratings given
@@ -30,13 +32,20 @@ At this point if RVM is installed you'll get prompted to trust this new .rvmrc f
 
 Now, after the proper ruby has been picked and you've got a clean gemset, let's get our gemset populated.
 
-	gem install bundler --pre # You may need to install bundler with your fresh gemset – I prefer bundler 1.1 right now
+	gem install bundler
 	bundle
 
 Run this command to initialize your sqlite database and make working copies of the config files.
 
 	rake initialize
-	
+
+### Start your server:
+
+    cd ~/Sites/the_rotten_pirate # or wherever you store that shiz
+    rackup
+
+Now you can navigate to localhost:9292
+
 ### Configure stuff!
 
 Important configurations in config/config.yml
@@ -145,7 +154,7 @@ Tested on ruby 1.9.2-p290 on Mac OSX.
 Also tested on ruby 1.8.7-p330 on Mac OSX.
 
 
-![Counter](http://hjhart.dyndns.org:3003/count.jpg "Counter")
+![Counter](http://counter.hjhart.com/the_rotten_pirate.jpg "Counter")
 
 
 ### added another column to the database
@@ -153,3 +162,8 @@ Also tested on ruby 1.8.7-p330 on Mac OSX.
 	ALTER TABLE downloads
 	 ADD youtube_url varchar2(255)
 	 ADD thumbnail_url varchar2(255)
+
+### Having database problems?
+
+Try running the sequel migration inside of the `db/migrate` directory. If that doesn't work, try running the query above in some sql editor.
+(This hasn't been worked out too well yet, but if you need help, please create an issue)

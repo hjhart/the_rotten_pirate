@@ -17,6 +17,8 @@ task :initialize do
     DB.create_table :downloads do
       primary_key :id
       String :name
+      String :thumbnail_url
+      String :youtube_url
     end
     puts "Creating sqlite database..."
   rescue Exception

@@ -34,22 +34,45 @@ class Application < Sinatra::Base
   
   get '/recent' do
     config = YAML.load(File.open('config/config.yml').read)
-    youtube_api_key = config["youtube_api_key"]
     @movies = Download.all.map { |d| d[:name] }.pop 12
-    require 'youtube_it'
-    
+
     begin
-      client = YouTubeIt::Client.new(:dev_key => config["youtube_api_key"])
-      @movies.map! do |movie_name| 
-        video_results = client.videos_by(:query => "#{movie_name} trailer")
-        trailer_url = video_results.videos.first.media_content.first.url
-        thumbnail_url = video_results.videos.first.thumbnails[1].url
-        {
-          :name => movie_name, 
-          :youtube_url => trailer_url,
-          :thumbnail_url => thumbnail_url
-        } 
+
+      @movies.map! do |movie_name|
+        if Download.has_youtube_url? movie_name
+          movie = Download.find_by_name(movie_name).first
+          trailer_url = movie[:youtube_url]
+          thumbnail_url = movie[:thumbnail_url]
+          {
+            :name => movie_name,
+            :youtube_url => trailer_url,
+            :thumbnail_url => thumbnail_url
+          }
+        else
+          require 'youtube_it'
+          begin
+            client = YouTubeIt::Client.new(:dev_key => config["youtube_api_key"])
+
+            video_results = client.videos_by(:query => "#{movie_name} trailer")
+            youtube_video = video_results.videos.first
+            trailer_url = youtube_video.media_content.first.url
+            thumbnail_url = youtube_video.thumbnails[1].url
+            Download.add_youtube_url(movie_name,  trailer_url, thumbnail_url)
+          rescue REXML::ParseException
+            trailer_url = "http://www.crayons.com"
+            thumbnail_url = "undefined"
+            session[:error] = 'Obtaining content from youtube failed. Check your internet connection.'
+          end
+          {
+            :name => movie_name,
+            :youtube_url => trailer_url,
+            :thumbnail_url => thumbnail_url
+          }
+
+        end
+
       end
+      ap @movies
     rescue OpenURI::HTTPError
       
       return "You must sign up for an API key from youtube and put it in your config file before using this page."

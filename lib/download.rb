@@ -9,20 +9,21 @@ class Download
     connection[:downloads]
   end
   
-  def self.migrate_youtube_url
-    begin
-      db = connection
-      db[:downloads]
-    rescue SQLite3::SQLException
-      
-    end
-  end
-  
-  def self.add_youtube_url name, url
+  def self.add_youtube_url name, url, thumbnail_url = nil
     db = connection
-    db[:downloads].filter(:name => name).update(:youtube_url => url)
+    find_by_name(name).update(:youtube_url => url, :thumbnail_url => thumbnail_url)
   end
-  
+
+  def self.find_by_name(name)
+    connection[:downloads].filter(:name => name)
+  end
+
+  def self.has_youtube_url? name
+    db = connection
+    movie = find_by_name(name).first
+    movie[:youtube_url] != nil
+  end
+
   def self.exists? name
     db = connection
     !!(db[:downloads].filter(:name => name).first)
