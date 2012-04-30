@@ -1,0 +1,9 @@
+<span>These could potentially be instantly watched. <small style="color:red; font-weight:bold;">Beta</small></span>
+<% @results.each_pair do |service, movies| %>
+  <h2><%= service %>></h2>
+    <ul>
+    <% movies.each do |movie| %>
+      <li><%= movie %></li>
+    <% end %>
+    </ul>
+<% end %>

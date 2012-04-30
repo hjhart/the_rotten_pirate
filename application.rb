@@ -11,6 +11,14 @@ class Application < Sinatra::Base
     @message = session[:message]
     erb :index
   end
+
+  get '/check' do
+    require 'vendor/mwhich'
+    movie = params[:movie]
+    m = MWhich::Client.new(:services => [:hulu, :itunes, :netflix])
+    @results = m.search(movie)
+    erb :check
+  end
   
   post '/download' do
     movie = params[:movie]

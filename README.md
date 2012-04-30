@@ -10,6 +10,7 @@
    - Movies not already downloaded through TRP
  - Web interface that allows you to start a download for any movie
    - View most recently downloaded movies and view youtube trailers
+   - Check whether movies are available on netflix, itunes, or hulu before downloading
  - We then pass the movies to the [torrent_api](https://github.com/hjhart/torrent_api) gem.
    - The gem looks at comments left by users for ratings of audio and video
    - Performs an average of all ratings given
@@ -169,3 +170,7 @@ Run the migrations.
 
   cd db/
   sequel -m . -M 1 sqlite://downloads.sqlite
+
+### Thanks to:
+
+https://github.com/dacort/mwhich

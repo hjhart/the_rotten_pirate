@@ -27,3 +27,7 @@ gem 'therubyracer'
 
 gem 'pry'
 gem 'pry-doc'
+gem 'yajl-ruby'
+gem 'ruby-hmac'
+gem 'nokogiri'
+

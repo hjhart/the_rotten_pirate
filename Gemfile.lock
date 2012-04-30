@@ -68,6 +68,7 @@ GEM
     rspec-expectations (2.7.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.7.0)
+    ruby-hmac (0.4.0)
     ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
     sass (3.1.12)
@@ -96,6 +97,7 @@ GEM
     whenever (0.7.0)
       activesupport (>= 2.3.4)
       chronic (~> 0.6.3)
+    yajl-ruby (1.1.0)
     yard (0.7.4)
     youtube_it (2.1.4)
       builder
@@ -115,11 +117,13 @@ DEPENDENCIES
   coffee-script
   haml
   i18n
+  nokogiri
   prowl
   pry
   pry-doc
   rake
   rspec (~> 2.7)
+  ruby-hmac
   sass
   sequel (~> 3.2)
   sinatra
@@ -129,5 +133,6 @@ DEPENDENCIES
   torrent_api (= 0.2.7)
   uglifier
   whenever
+  yajl-ruby
   youtube_it
   yui-compressor
