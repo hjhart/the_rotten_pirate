@@ -1,4 +1,4 @@
-db/*
+db/downloads.sqlite
 tmp/*
 logs/*
 config/prowl.yml

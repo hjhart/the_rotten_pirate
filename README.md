@@ -163,7 +163,9 @@ Also tested on ruby 1.8.7-p330 on Mac OSX.
 	 ADD youtube_url varchar2(255)
 	 ADD thumbnail_url varchar2(255)
 
-### Having database problems?
+### Having database problems running the server?
 
-Try running the sequel migration inside of the `db/migrate` directory. If that doesn't work, try running the query above in some sql editor.
-(This hasn't been worked out too well yet, but if you need help, please create an issue)
+Run the migrations.
+
+  cd db/
+  sequel -m . -M 1 sqlite://downloads.sqlite
