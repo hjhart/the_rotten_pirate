@@ -155,7 +155,7 @@ class TheRottenPirate
   end
   
   def filter_out_max_downloads count
-    @dvds = dvds[0, count - 1]
+    @dvds = dvds[0, count]
   end
   
   def filter_out_already_downloaded
