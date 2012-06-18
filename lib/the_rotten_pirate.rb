@@ -83,6 +83,26 @@ class TheRottenPirate
     output.prowl_message "Downloaded #{torrents_to_download.size} movies", torrents_to_download.map{|m| m[:title] }.join(", ")
   end
   
+  def initialize_download movie_title
+      torrent_to_download, full_results = search_for_dvd movie_title
+      if torrent_to_download.nil? 
+        puts "No results found for #{movie_title}"
+        return
+      end
+      # pp full_results
+      if config["dry_run"]
+        puts "[DRY RUN] Starting the download for #{movie_title} -> #{torrent_to_download[:title]}"
+      else
+        puts "Starting the download for #{movie_title} -> #{torrent_to_download[:title]}"
+        if Download.torrent_from_url torrent_to_download[:link]
+          Download.insert torrent_to_download[:title] 
+          puts "Download successfully started."
+        else
+          exit("Download failed while starting.")
+        end
+      end
+    end
+  
   def analyze_results results, num_to_analyze, quality_level, minimum_seeds
     results = results[0,num_to_analyze].map do |result|
       url = "http://www.thepiratebay.se/torrent/#{result.id}/"
