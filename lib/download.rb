@@ -32,19 +32,25 @@ class Download
   end
   
   def self.torrent_from_url url
-    require 'net/http'
+    config = YAML.load(File.open('config/config.yml').read)
     
+    if config["use_magnet_links"]
+      `open '#{url}'`
+    else
     
-    torrent_filename_match = url.match(/.*\/(.*)/)
-    torrent_name = torrent_filename_match.nil? ? "tmp.torrent" : torrent_filename_match[1]
-    torrent_domain, torrent_uri = url.gsub(/https?:\/\//, '').split('.se')
-    torrent_domain += '.se'
+      require 'net/http'
     
-    FileUtils.mkdir_p File.join(self.download_directory)
-    filename = File.join(self.download_directory, torrent_name)
-    Net::HTTP.start(torrent_domain) do |http| 
-       resp = http.get(torrent_uri)
-       open(filename, "wb") { |file| file.write(resp.body) }
-    end
+      torrent_filename_match = url.match(/.*\/(.*)/)
+      torrent_name = torrent_filename_match.nil? ? "tmp.torrent" : torrent_filename_match[1]
+      torrent_domain, torrent_uri = url.gsub(/https?:\/\//, '').split('.se')
+      torrent_domain += '.se'
+    
+      FileUtils.mkdir_p File.join(self.download_directory)
+      filename = File.join(self.download_directory, torrent_name)
+      Net::HTTP.start(torrent_domain) do |http| 
+         resp = http.get(torrent_uri)
+         open(filename, "wb") { |file| file.write(resp.body) }
+      end
+    end # else
   end
 end

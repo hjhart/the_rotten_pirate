@@ -121,10 +121,10 @@ class TheRottenPirate
       video_rank = Rank.new(details.video_scores).score
     end
       
-    { 
+    result_hash = { 
       :seeds => result.seeds, 
       :size => result.size, 
-      :name => result.name, 
+      :name => result.name,
       :video => 
         { 
           :average=> video_average, 
@@ -132,9 +132,16 @@ class TheRottenPirate
           :votes => video_votes,
           :rank => video_rank
         },
-      :url => url,
-      :link => result.link
-    } 
+      :url => url
+    }
+    
+    if @config["use_magnet_links"]
+      result_hash[:link] = result.magnet_link
+    else
+      result_hash[:link] = result.link
+    end
+    
+    result_hash 
   end
   
   def gather_and_filter_dvds
