@@ -169,7 +169,7 @@ class TheRottenPirate
   
   def fetch_new_dvds
     require 'open-uri'
-    text = open('http://www.rottentomatoes.com/syndication/tab/new_releases.txt').read
+    text = open('http://www.rottentomatoes.com/syndication/tab/complete_certified_fresh_dvds.txt').read
     @dvds = TheRottenPirate.extract_new_dvds text
   end
   
