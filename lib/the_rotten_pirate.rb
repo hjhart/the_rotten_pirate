@@ -36,9 +36,9 @@ class TheRottenPirate
       analysis_results = analyze_results results, num_to_analyze, quality_level, minimum_seeds
       analysis_results = analysis_results.sort_by { |r| -(r[:video][:rank]) }
       
-      [{ :link => analysis_results.first[:link], :title => analysis_results.first[:name] }, analysis_results]
+      [{ :link => analysis_results.first[:link], :title => analysis_results.first[:name], :search_string => title }, analysis_results]
     else
-      { :link => results.first.link, :title => results.first.name }
+      { :link => results.first.link, :title => results.first.name, :search_string => title }
     end
   end
     
@@ -65,17 +65,7 @@ class TheRottenPirate
     YAMLWriter.new({ :full_analysis_results => full_analysis_results, :links_to_download => torrents_to_download }).write
     
     torrents_to_download.each do |download|
-      if config["dry_run"]
-        output.puts "[DRY RUN] Starting the download for #{download[:title]}"
-      else
-        output.puts "Starting the download for #{download[:title]}"
-        if Download.torrent_from_url download[:link]
-          Download.insert download[:title] 
-          output.puts "Download successfully started."
-        else
-          output.error "Download failed while starting."
-        end
-      end
+      captain.download_torrent download
     end
 
     output.puts "Done!"    
@@ -83,25 +73,28 @@ class TheRottenPirate
     output.prowl_message "Downloaded #{torrents_to_download.size} movies", torrents_to_download.map{|m| m[:title] }.join(", ")
   end
   
-  def initialize_download movie_title
-      torrent_to_download, full_results = search_for_dvd movie_title
-      if torrent_to_download.nil? 
-        puts "No results found for #{movie_title}"
-        return
-      end
-      # pp full_results
-      if config["dry_run"]
-        puts "[DRY RUN] Starting the download for #{movie_title} -> #{torrent_to_download[:title]}"
+  def download_torrent download
+    if config["dry_run"]
+      puts "[DRY RUN] Starting the download for #{download[:search_string]} --> #{download[:title]}"
+    else
+      puts "Starting the download for #{download[:search_string]} --> #{download[:title]}"
+      if Download.torrent_from_url download[:link]
+        Download.insert download[:title] 
+        puts "Download successfully started."
       else
-        puts "Starting the download for #{movie_title} -> #{torrent_to_download[:title]}"
-        if Download.torrent_from_url torrent_to_download[:link]
-          Download.insert torrent_to_download[:title] 
-          puts "Download successfully started."
-        else
-          exit("Download failed while starting.")
-        end
+        error "Download failed while starting."
       end
     end
+  end  
+  
+  def initialize_download movie_title
+    torrent_to_download, full_results = search_for_dvd movie_title
+    if torrent_to_download.nil? 
+      puts "No results found for #{movie_title}"
+      return
+    end
+    download_torrent torrent_to_download
+  end
   
   def analyze_results results, num_to_analyze, quality_level, minimum_seeds
     results = results[0,num_to_analyze].map do |result|
