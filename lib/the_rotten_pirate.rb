@@ -36,9 +36,9 @@ class TheRottenPirate
       analysis_results = analyze_results results, num_to_analyze, quality_level, minimum_seeds
       analysis_results = analysis_results.sort_by { |r| -(r[:video][:rank]) }
       
-      [{ :link => analysis_results.first[:link], :title => title }, analysis_results]
+      [{ :link => analysis_results.first[:link], :title => analysis_results.first[:name] }, analysis_results]
     else
-      { :link => results.first.link, :title => title }
+      { :link => results.first.link, :title => results.first.name }
     end
   end
     
