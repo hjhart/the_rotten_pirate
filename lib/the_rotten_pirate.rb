@@ -145,6 +145,7 @@ class TheRottenPirate
     filter_percentage @config["filter_out_less_than_percentage"] if @config["filter_out_less_than_percentage"]
     filter_out_non_certified_fresh if @config["filter_out_non_certified_fresh"]
     filter_out_already_downloaded if @config["filter_out_already_downloaded"]
+    filter_out_max_downloads @config["filter_out_maximum_downloads"] if @config["filter_out_maximum_downloads"]
   end
   
   def summarize_process_to_output 
@@ -152,6 +153,10 @@ class TheRottenPirate
     @l.puts "Attempting to download the following titles: "
     @l.puts dvds.map { |dvd| dvd["Title"] }
     @l.puts "*" * 80
+  end
+  
+  def filter_out_max_downloads count
+    @dvds = dvds[0, count - 1]
   end
   
   def filter_out_already_downloaded
