@@ -138,8 +138,9 @@ class TheRottenPirate
   def gather_and_filter_dvds
     @l.puts "Searching..."
     fetch_new_dvds
-
+    
     @l.puts "Filtering..."
+    @dvds = dvds.uniq
     filter_percentage @config["filter_out_less_than_percentage"] if @config["filter_out_less_than_percentage"]
     filter_out_non_certified_fresh if @config["filter_out_non_certified_fresh"]
     filter_out_already_downloaded if @config["filter_out_already_downloaded"]
