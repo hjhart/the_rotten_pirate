@@ -93,7 +93,7 @@ class TheRottenPirate
     else
       @l.puts "Starting the download for #{download[:search_string]} --> #{download[:title]}"
       if Download.torrent_from_url download[:link]
-        Download.insert download[:title] 
+        Download.insert download[:search_string] 
         @l.puts "Download successfully started."
       else
         @l.puts "Download failed while starting."
