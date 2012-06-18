@@ -47,6 +47,8 @@ class TheRottenPirate
 
     captain = TheRottenPirate.new
     output = captain.instance_variable_get(:@l)
+    config = captain.instance_variable_get(:@config)
+    
     captain.gather_and_filter_dvds
     
     full_analysis_results = []
@@ -63,12 +65,16 @@ class TheRottenPirate
     YAMLWriter.new({ :full_analysis_results => full_analysis_results, :links_to_download => torrents_to_download }).write
     
     torrents_to_download.each do |download|
-      output.puts "Starting the download for #{download[:title]}"
-      if Download.torrent_from_url download[:link]
-        Download.insert download[:title] 
-        output.puts "Download successfully started."
+      if config["dry_run"]
+        output.puts "[DRY RUN] Starting the download for #{download[:title]}"
       else
-        output.error "Download failed while starting."
+        output.puts "Starting the download for #{download[:title]}"
+        if Download.torrent_from_url download[:link]
+          Download.insert download[:title] 
+          output.puts "Download successfully started."
+        else
+          output.error "Download failed while starting."
+        end
       end
     end
 
