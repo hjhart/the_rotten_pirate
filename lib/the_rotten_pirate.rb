@@ -6,29 +6,16 @@ require 'download'
 require 'torrent_api'
 require 'name_cleaner'
 require 'rank'
+require 'pp'
 
 class TheRottenPirate
   attr_reader :config
   
   def initialize
     @config = YAML.load(File.open('config/config.yml').read)
-    @dvds = nil
+    @dvds = []
+    @torrents_to_download = []
     @l = ForkLogger.new 
-  end
-  
-  def initialize_download movie_title
-    torrent_to_download, full_results = search_for_dvd movie_title
-    if torrent_to_download.nil? 
-      puts "No results found for #{movie_title}"
-      return
-    end
-    puts "Starting the download for #{movie_title}"
-    if Download.torrent_from_url torrent_to_download[:link]
-      Download.insert torrent_to_download[:title] 
-      puts "Download successfully started."
-    else
-      exit("Download failed while starting.")
-    end
   end
   
   def search_for_dvd(title, full_analysis=[])
@@ -51,45 +38,86 @@ class TheRottenPirate
       analysis_results = analyze_results results, num_to_analyze, quality_level, minimum_seeds
       analysis_results = analysis_results.sort_by { |r| -(r[:video][:rank]) }
       
-      [{ :link => analysis_results.first[:link], :title => title }, analysis_results]
+      [{ :link => analysis_results.first[:link], :title => analysis_results.first[:name], :search_string => title }, analysis_results]
     else
-      { :link => results.first.link, :title => title }
+      { :link => results.first.link, :title => results.first.name, :search_string => title }
     end
   end
+  
+  def self.download_from_watch_file
+    captain = TheRottenPirate.new
+    output = captain.instance_variable_get(:@l)
+    config = captain.instance_variable_get(:@config)
+    config["using_watch_file"] = true
     
+    captain.gather_and_filter_dvds
+    
+    captain.process_queue
+    
+  end
   
   def self.execute
 
     captain = TheRottenPirate.new
     output = captain.instance_variable_get(:@l)
+    config = captain.instance_variable_get(:@config)
+    
     captain.gather_and_filter_dvds
-    
+
+    captain.process_queue
+  end
+  
+  def process_queue
     full_analysis_results = []
-    torrents_to_download = []
-    
-    captain.summarize_process_to_output
-        
-    captain.dvds.each do |dvd|
-      torrent_to_download, full_analysis_result = captain.search_for_dvd(dvd["Title"])
-      torrents_to_download << torrent_to_download unless torrent_to_download.nil?
+
+    summarize_process_to_output
+    @dvds.each do |dvd|
+      torrent_to_download, full_analysis_result = search_for_dvd(dvd["Title"])
+      @torrents_to_download << torrent_to_download unless torrent_to_download.nil?
       full_analysis_results << full_analysis_result unless full_analysis_result.nil?
     end
+    YAMLWriter.new({ :full_analysis_results => full_analysis_results, :links_to_download => @torrents_to_download }).write
     
-    YAMLWriter.new({ :full_analysis_results => full_analysis_results, :links_to_download => torrents_to_download }).write
+    if @torrents_to_download.count == 0
+      @l.puts "Nothing to do!"
+      return
+    end
     
-    torrents_to_download.each do |download|
-      output.puts "Starting the download for #{download[:title]}"
-      if Download.torrent_from_url download[:link]
-        Download.insert download[:title] 
-        output.puts "Download successfully started."
-      else
-        output.error "Download failed while starting."
-      end
+    @torrents_to_download.each do |download|
+      download_torrent download
+      pp download
     end
 
-    output.puts "Done!"    
-    output.puts "Downloaded a total of #{torrents_to_download.size} torrents"
-    output.prowl_message "Downloaded #{torrents_to_download.size} movies", torrents_to_download.map{|m| m[:title] }.join(", ")
+    write_watchlist 
+
+    @l.puts "Done!"    
+    @l.puts "Downloaded a total of #{@torrents_to_download.size} torrents"
+    @l.prowl_message "Downloaded #{@torrents_to_download.size} movies", @torrents_to_download.map{|m| m[:title] }.join(", ")
+    
+  end
+  
+  def download_torrent download
+    if config["dry_run"]
+      @l.puts "[DRY RUN] Starting the download for #{download[:search_string]} --> #{download[:title]}"
+    else
+      @l.puts "Starting the download for #{download[:search_string]} --> #{download[:title]}"
+      if Download.torrent_from_url download[:link]
+        Download.insert download[:search_string]
+        download[:downloaded] = 1
+        @l.puts "Download successfully started."
+      else
+        @l.puts "Download failed while starting."
+      end
+    end
+  end  
+  
+  def initialize_download movie_title
+    torrent_to_download, full_results = search_for_dvd movie_title
+    if torrent_to_download.nil? 
+      puts "No results found for #{movie_title}"
+      return
+    end
+    download_torrent torrent_to_download
   end
   
   def analyze_results results, num_to_analyze, quality_level, minimum_seeds
@@ -121,10 +149,10 @@ class TheRottenPirate
       video_rank = Rank.new(details.video_scores).score
     end
       
-    { 
+    result_hash = { 
       :seeds => result.seeds, 
       :size => result.size, 
-      :name => result.name, 
+      :name => result.name,
       :video => 
         { 
           :average=> video_average, 
@@ -132,19 +160,31 @@ class TheRottenPirate
           :votes => video_votes,
           :rank => video_rank
         },
-      :url => url,
-      :link => result.link
-    } 
+      :url => url
+    }
+    
+    if @config["use_magnet_links"]
+      result_hash[:link] = result.magnet_link
+    else
+      result_hash[:link] = result.link
+    end
+    
+    result_hash 
   end
   
   def gather_and_filter_dvds
     @l.puts "Searching..."
     fetch_new_dvds
-
+    filter_dvds
+  end
+  
+  def filter_dvds
     @l.puts "Filtering..."
+    @dvds = dvds.uniq
     filter_percentage @config["filter_out_less_than_percentage"] if @config["filter_out_less_than_percentage"]
     filter_out_non_certified_fresh if @config["filter_out_non_certified_fresh"]
     filter_out_already_downloaded if @config["filter_out_already_downloaded"]
+    filter_out_max_downloads @config["filter_out_maximum_downloads"] if @config["filter_out_maximum_downloads"]
   end
   
   def summarize_process_to_output 
@@ -152,6 +192,10 @@ class TheRottenPirate
     @l.puts "Attempting to download the following titles: "
     @l.puts dvds.map { |dvd| dvd["Title"] }
     @l.puts "*" * 80
+  end
+  
+  def filter_out_max_downloads count
+    @dvds = dvds[0, count]
   end
   
   def filter_out_already_downloaded
@@ -170,10 +214,51 @@ class TheRottenPirate
     @dvds || fetch_new_dvds
   end
   
+  def write_watchlist
+    return if @config['dry_run']
+    
+    filename = @config['watch_file']
+    if filename.nil?
+      puts "There was no filename specified in the config file" 
+      return
+    end
+
+    @l.puts "Writing watchlist"
+    
+    writer = File.open(filename, "w");
+
+    @torrents_to_download.each do |dvd|
+      writer.puts "#" + "#{dvd["Title"]}\n" if dvd[:downloaded] == 1
+      writer.puts "#{dvd["Title"]}\n" if dvd[:downloaded] != 1
+    end
+    
+    writer.close
+  end
+  
   def fetch_new_dvds
-    require 'open-uri'
-    text = open('http://www.rottentomatoes.com/syndication/tab/new_releases.txt').read
-    @dvds = TheRottenPirate.extract_new_dvds text
+    
+    if @config["using_watch_file"]
+      @dvds = []
+      filename = @config['watch_file']
+      if filename.nil?
+        puts "There was no filename specified in the config file" 
+        return
+      end
+    
+      File.open(filename, 'r').each do |movie_title|
+        movie_title = movie_title.chomp
+        next if movie_title == "" 
+        if movie_title.match(/^\#/) 
+          @dvds << { "Title" => movie_title, "CertifiedFresh" => "0", "NumTomatometerPercent" => "100" }
+        else
+          @dvds << { "Title" => movie_title, "CertifiedFresh" => "1", "NumTomatometerPercent" => "100" }
+        end
+      end
+    else
+      require 'open-uri'
+      text = open('http://www.rottentomatoes.com/syndication/tab/complete_certified_fresh_dvds.txt').read
+      @dvds = TheRottenPirate.extract_new_dvds text
+    end
   end
   
   def self.extract_new_dvds text
