@@ -30,4 +30,4 @@ gem 'pry-doc'
 gem 'yajl-ruby'
 gem 'ruby-hmac'
 gem 'nokogiri'
-
+gem 'rvm-capistrano'
