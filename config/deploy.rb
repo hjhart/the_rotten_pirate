@@ -15,7 +15,8 @@ role :app, domain
 role :db,  domain, :primary => true
 
 set :deploy_via, :remote_cache
-# before "deploy:finalize_update", "deploy:link_shared_directories"
+ before "deploy:finalize_update", "deploy:link_shared_files"
+
 
 namespace :deploy do
   task :start do ; end
@@ -45,7 +46,9 @@ namespace :deploy do
   end
   
   task :link_shared_files, :roles => :app do
-    run "ln -s #{shared_path}/db/downloads.sqlite.db #{release_path}/db/downloads.db"
+    run "ln -s #{shared_path}/db/downloads.sqlite #{release_path}/db/downloads.sqlite"
+    run "ln -s #{shared_path}/config/prowl.yml #{release_path}/config/prowl.yml"
+    run "ln -s #{shared_path}/config/config.yml #{release_path}/config/config.yml"
   end
   
 end
