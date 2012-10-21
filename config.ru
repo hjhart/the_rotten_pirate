@@ -7,6 +7,8 @@ require 'uglifier'
 require "yui/compressor"
 
 require "application"
+require 'new_relic/rack/developer_mode'
+use NewRelic::Rack::DeveloperMode
 
 map '/assets' do
   environment = Sprockets::Environment.new

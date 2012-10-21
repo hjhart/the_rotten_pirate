@@ -1,5 +1,4 @@
 $:.push 'lib'
-require 'newrelic_rpm'
 require 'the_rotten_pirate'
 require 'json'
 
