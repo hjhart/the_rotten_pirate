@@ -2,10 +2,7 @@ $:.push 'lib'
 require 'the_rotten_pirate'
 require 'json'
 
-class Application < Sinatra::Base
-  
-  NewRelic::Agent.manual_start
-  
+class Application < Sinatra::Base  
   enable :sessions
   set :root, File.dirname(__FILE__)
   set :logging, true

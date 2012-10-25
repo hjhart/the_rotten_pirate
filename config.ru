@@ -1,5 +1,7 @@
 $:.unshift File.expand_path("../", __FILE__)
+
 require 'sinatra'
+require 'newrelic_rpm'
 require 'haml'
 require 'sass'
 require 'sprockets'
@@ -7,8 +9,6 @@ require 'uglifier'
 require "yui/compressor"
 
 require "application"
-require 'new_relic/rack/developer_mode'
-use NewRelic::Rack::DeveloperMode
 
 map '/assets' do
   environment = Sprockets::Environment.new
