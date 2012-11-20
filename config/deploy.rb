@@ -49,6 +49,7 @@ namespace :deploy do
     run "ln -s #{shared_path}/db/downloads.sqlite #{release_path}/db/downloads.sqlite"
     run "ln -s #{shared_path}/config/prowl.yml #{release_path}/config/prowl.yml"
     run "ln -s #{shared_path}/config/config.yml #{release_path}/config/config.yml"
+    run "ln -s #{shared_path}/config/newrelic.yml #{release_path}/config/newrelic.yml"
   end
   
 end

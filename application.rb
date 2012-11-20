@@ -27,7 +27,7 @@ class Application < Sinatra::Base
       session[:error] = 'You must enter a title to download'
       redirect '/' 
     else
-      torrent_url = TheRottenPirate.new.initialize_download movie
+      torrent_url = Pirate.new.initialize_download movie
       torrent_url_match = torrent_url.match(/http:\/\/torrents.thepiratebay.se\/\d+\/(.*)/)
       if(torrent_url_match)
         torrent_name = torrent_url_match[1]

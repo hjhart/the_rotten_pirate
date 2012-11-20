@@ -7,7 +7,7 @@ require 'torrent_api'
 require 'name_cleaner'
 require 'rank'
 
-class TheRottenPirate
+class Pirate
   attr_reader :config
   
   def initialize
@@ -18,14 +18,14 @@ class TheRottenPirate
   
   def initialize_download movie_title
     torrent_to_download, full_results = search_for_dvd movie_title
+    puts "Torrents to download #{torrent_to_download}"
     if torrent_to_download.nil? 
       puts "No results found for #{movie_title}"
       return
     end
     puts "Starting the download for #{movie_title}"
     if Download.torrent_from_url torrent_to_download[:link]
-      Download.insert torrent_to_download[:title] 
-      puts "Download successfully started."
+      Download.create(:name => torrent_to_download[:title], :download_url => torrent_to_download[:link])
       torrent_to_download[:link]
     else
       exit("Download failed while starting.")
@@ -61,7 +61,7 @@ class TheRottenPirate
   
   def self.execute
 
-    captain = TheRottenPirate.new
+    captain = Pirate.new
     output = captain.instance_variable_get(:@l)
     captain.gather_and_filter_dvds
     
@@ -174,7 +174,7 @@ class TheRottenPirate
   def fetch_new_dvds
     require 'open-uri'
     text = open('http://www.rottentomatoes.com/syndication/tab/new_releases.txt').read
-    @dvds = TheRottenPirate.extract_new_dvds text
+    @dvds = Pirate.extract_new_dvds text
   end
   
   def self.extract_new_dvds text

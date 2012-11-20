@@ -111,7 +111,7 @@ Run `crontab -e` and paste the following into there to start a new cronjob. It w
 ### Play with code
 
 	rake console
-	TheRottenPirate.execute
+	Pirate.execute
 
 ### The algorithm for scoring torrents
 

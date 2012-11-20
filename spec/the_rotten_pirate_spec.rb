@@ -1,10 +1,10 @@
 require 'the_rotten_pirate'
 
-describe TheRottenPirate do
+describe Pirate do
   describe "#extract dvd info" do
     it "should extract some dvds given a text file with them" do
       text = File.open(File.join('spec', 'upcoming_dvds.txt'),'r').read
-      dvds = TheRottenPirate.extract_new_dvds text
+      dvds = Pirate.extract_new_dvds text
       dvds.first.should == { 
         "MovieID"=>"770687943", 
         "Title"=>"Harry Potter and the Deathly Hallows - Part 2", 
@@ -20,14 +20,14 @@ describe TheRottenPirate do
     
   describe "#fetch_new_dvds" do
     it "should grab the upcoming dvds text file and then call extract_new_dvds" do
-      TheRottenPirate.should_receive(:extract_new_dvds)
-      TheRottenPirate.new.fetch_new_dvds
+      Pirate.should_receive(:extract_new_dvds)
+      Pirate.new.fetch_new_dvds
     end
   end
   
   describe "#filter_out_non_certified_fresh" do
     it "should not show any non certified movies" do
-      dvds = TheRottenPirate.new.filter_out_non_certified_fresh
+      dvds = Pirate.new.filter_out_non_certified_fresh
       dvds.each { |dvd| dvd["CertifiedFresh"].should_not eq "0" }
     end
   end
@@ -42,7 +42,7 @@ describe TheRottenPirate do
     end
   
     it "should filter out already downloaded movies" do
-      trp = TheRottenPirate.new
+      trp = Pirate.new
       trp.filter_out_already_downloaded
       dvds = trp.instance_variable_get(:@dvds)
       dvds.each { |dvd| dvd["Title"].should_not eq "The Strange Case Of Angelica" }
@@ -51,7 +51,7 @@ describe TheRottenPirate do
   
   describe "#filter_percentage" do
     it "should filter out anything lower than the parameter" do
-      dvds = TheRottenPirate.new
+      dvds = Pirate.new
       dvds.fetch_new_dvds
       before = dvds.instance_variable_get(:@dvds)
       filtered_dvds = dvds.filter_percentage(80)
@@ -62,7 +62,7 @@ describe TheRottenPirate do
     end
     
     it "should be chainable with non certified" do
-      filter = TheRottenPirate.new
+      filter = Pirate.new
       filter.filter_percentage(80)
       eightieth_percentile = filter.instance_variable_get(:@dvds)
       
