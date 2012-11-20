@@ -1,0 +1,3019 @@
+Starting the New Relic Agent.
+NewRelic Agent Developer Mode enabled.
+To view performance information, go to http://localhost:3000/newrelic
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+Starting the New Relic Agent.
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+Starting the New Relic Agent.
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+Starting the New Relic Agent.
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+Starting the New Relic Agent.
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+Starting the New Relic Agent.
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+  [1m[36m (7.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (3.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.8ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateDownloads (20121119164248)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (10.1ms)[0m  CREATE TABLE "downloads" ("id" serial primary key, "name" character varying(255), "download_url" character varying(255), "youtube_url" character varying(255), "thumbnail_url" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121119164248')[0m
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (2.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mPK and serial sequence (7.6ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"downloads"'::regclass
+
+  [1m[36m (2.6ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'downloads'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+Starting the New Relic Agent.
+NewRelic Agent Developer Mode enabled.
+To view performance information, go to http://localhost:3000/newrelic
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-11-19 08:48:55 -0800
+Served asset /rails.png - 304 Not Modified (57ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:49:26 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (17.8ms)
+Compiled downloads.css  (25ms)  (pid 947)
+Compiled scaffolds.css  (11ms)  (pid 947)
+Compiled application.css  (81ms)  (pid 947)
+Compiled jquery.js  (3ms)  (pid 947)
+Compiled jquery_ujs.js  (1ms)  (pid 947)
+Compiled downloads.js  (469ms)  (pid 947)
+Compiled application.js  (587ms)  (pid 947)
+Completed 200 OK in 1067ms (Views: 904.8ms | ActiveRecord: 31.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:49:27 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/downloads.css?body=1" for 127.0.0.1 at 2012-11-19 08:49:27 -0800
+Served asset /downloads.css - 200 OK (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-19 08:49:27 -0800
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-19 08:49:27 -0800
+Served asset /application.css - 200 OK (8ms)
+
+
+Started GET "/assets/downloads.js?body=1" for 127.0.0.1 at 2012-11-19 08:49:27 -0800
+Served asset /downloads.js - 200 OK (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-19 08:49:27 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-19 08:49:27 -0800
+Served asset /application.js - 200 OK (8ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-19 08:49:27 -0800
+Served asset /scaffolds.css - 304 Not Modified (4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:50:06 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:50:06 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 08:50:06 -0800
+Served asset /bootstrap-responsive.css - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap-responsive.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 08:50:06 -0800
+Served asset /bootstrap.css - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 08:50:06 -0800
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 08:50:06 -0800
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:51:34 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:51:35 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 08:51:35 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 08:51:35 -0800
+Compiled bootstrap.css  (0ms)  (pid 947)
+Served asset /bootstrap.css - 200 OK (15ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 08:51:35 -0800
+Compiled bootstrap-responsive.css  (0ms)  (pid 947)
+Served asset /bootstrap-responsive.css - 200 OK (12ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 08:51:35 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:51:37 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:51:38 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 08:51:38 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 08:51:38 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 08:51:38 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 08:51:38 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/check?movie=Someone" for 127.0.0.1 at 2012-11-19 08:51:41 -0800
+
+ActionController::RoutingError (No route matches [GET] "/check"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 08:51:41 -0800
+
+ActionController::RoutingError (No route matches [GET] "/check"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/recent" for 127.0.0.1 at 2012-11-19 08:51:46 -0800
+
+ActionController::RoutingError (No route matches [GET] "/recent"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/recent" for 127.0.0.1 at 2012-11-19 08:51:46 -0800
+
+ActionController::RoutingError (No route matches [GET] "/recent"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:52:58 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 08:52:58 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 08:52:58 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 08:52:58 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 08:52:58 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 08:52:58 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 08:52:59 -0800
+Processing by DownloadsController#index as HTML
+  [1m[36mDownload Load (2.5ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (69.9ms)
+Completed 500 Internal Server Error in 78ms
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <% @movies.each do |movie| %>
+    2:     <div class="span3">
+    3:       <a href="<%= movie[:youtube_url] %>">
+    4:         <img src="<%= movie[:thumbnail_url] %>"/><br/><%= movie[:name] %>
+  app/views/downloads/index.html.erb:1:in `_app_views_downloads_index_html_erb__4428325016730782930_2167071300'
+  app/controllers/downloads_controller.rb:7:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (23.4ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 08:52:59 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (0.6ms)[0m  SELECT "downloads".* FROM "downloads" 
+  Rendered downloads/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <% @movies.each do |movie| %>
+    2:     <div class="span3">
+    3:       <a href="<%= movie[:youtube_url] %>">
+    4:         <img src="<%= movie[:thumbnail_url] %>"/><br/><%= movie[:name] %>
+  app/views/downloads/index.html.erb:1:in `_app_views_downloads_index_html_erb__4428325016730782930_2167071300'
+  app/controllers/downloads_controller.rb:7:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (23.7ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 08:53:10 -0800
+Processing by DownloadsController#index as HTML
+  [1m[36mDownload Load (0.2ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 08:53:10 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (0.3ms)[0m  SELECT "downloads".* FROM "downloads" 
+  Rendered downloads/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 08:53:11 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 08:53:11 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 08:53:11 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 08:53:11 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/check?movie=" for 127.0.0.1 at 2012-11-19 08:56:24 -0800
+
+ActionController::RoutingError (No route matches [GET] "/check"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 08:56:24 -0800
+
+ActionController::RoutingError (No route matches [GET] "/check"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/check?movie=Someone" for 127.0.0.1 at 2012-11-19 08:58:18 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"Someone"}
+  Rendered downloads/check.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `each_pair' for nil:NilClass):
+    1: <span>These can be instantly watched <small style="color:red; font-weight:bold;">Beta</small></span>
+    2: <% @results.each_pair do |service, movies| %>
+    3:   <h2><%= service %>></h2>
+    4:     <ul>
+    5:     <% movies.each do |movie| %>
+  app/views/downloads/check.html.erb:2:in `_app_views_downloads_check_html_erb__3832344775690272343_2193962940'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.9ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 08:58:19 -0800
+Processing by DownloadsController#check as */*
+  Rendered downloads/check.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 22ms
+
+ActionView::Template::Error (undefined method `each_pair' for nil:NilClass):
+    1: <span>These can be instantly watched <small style="color:red; font-weight:bold;">Beta</small></span>
+    2: <% @results.each_pair do |service, movies| %>
+    3:   <h2><%= service %>></h2>
+    4:     <ul>
+    5:     <% movies.each do |movie| %>
+  app/views/downloads/check.html.erb:2:in `_app_views_downloads_check_html_erb__3832344775690272343_2170027480'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.9ms)
+
+
+Started GET "/check?movie=Someone" for 127.0.0.1 at 2012-11-19 09:01:15 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"Someone"}
+Completed 500 Internal Server Error in 5ms
+
+LoadError (no such file to load -- vendor/mwhich):
+  app/controllers/downloads_controller.rb:85:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.7ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 09:01:16 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 5ms
+
+LoadError (no such file to load -- vendor/mwhich):
+  app/controllers/downloads_controller.rb:85:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.5ms)
+
+
+Started GET "/check?movie=Someone" for 127.0.0.1 at 2012-11-19 09:02:15 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"Someone"}
+Completed 500 Internal Server Error in 5ms
+
+LoadError (no such file to load -- mwich):
+  app/controllers/downloads_controller.rb:85:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.7ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 09:02:15 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 5ms
+
+LoadError (no such file to load -- mwich):
+  app/controllers/downloads_controller.rb:85:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.0ms)
+Starting the New Relic Agent.
+NewRelic Agent Developer Mode enabled.
+To view performance information, go to http://localhost:3000/newrelic
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+
+
+Started GET "/check?movie=Someone" for 127.0.0.1 at 2012-11-19 09:02:38 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"Someone"}
+Completed 500 Internal Server Error in 4ms
+
+LoadError (no such file to load -- mwich):
+  app/controllers/downloads_controller.rb:85:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.2ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 09:02:38 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 10ms
+
+LoadError (no such file to load -- mwich):
+  app/controllers/downloads_controller.rb:85:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.9ms)
+
+
+Started POST "/download" for 127.0.0.1 at 2012-11-19 09:02:59 -0800
+
+ActionController::RoutingError (No route matches [POST] "/download"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/download" for 127.0.0.1 at 2012-11-19 09:02:59 -0800
+
+ActionController::RoutingError (No route matches [GET] "/download"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:04:01 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 132ms (Views: 5.9ms | ActiveRecord: 23.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:04:01 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 09:04:01 -0800
+Served asset /application.js - 304 Not Modified (42ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 09:04:01 -0800
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 09:04:01 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 09:04:01 -0800
+Served asset /bootstrap.css - 304 Not Modified (6ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:04:05 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "movie"=>"Somewhere"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (55.5ms)[0m  INSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 19 Nov 2012 17:04:05 UTC +00:00], ["download_url", nil], ["name", nil], ["thumbnail_url", nil], ["updated_at", Mon, 19 Nov 2012 17:04:05 UTC +00:00], ["youtube_url", nil]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/downloads/1
+Completed 302 Found in 62ms (ActiveRecord: 57.0ms)
+
+
+Started GET "/downloads/1" for 127.0.0.1 at 2012-11-19 09:04:05 -0800
+Processing by DownloadsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDownload Load (1.9ms)[0m  SELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered downloads/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 11ms (Views: 5.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/downloads/1" for 127.0.0.1 at 2012-11-19 09:04:05 -0800
+Processing by DownloadsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mDownload Load (4.5ms)[0m  [1mSELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered downloads/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 10ms (Views: 3.7ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 09:04:05 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 09:04:05 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 09:04:05 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 09:04:05 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads/1" for 127.0.0.1 at 2012-11-19 09:04:13 -0800
+Processing by DownloadsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDownload Load (0.2ms)[0m  SELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered downloads/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/downloads/1" for 127.0.0.1 at 2012-11-19 09:04:13 -0800
+Processing by DownloadsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mDownload Load (0.4ms)[0m  [1mSELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered downloads/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 09:04:13 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 09:04:13 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 09:04:13 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 09:04:13 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:05:08 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:05:08 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 09:05:08 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 09:05:08 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 09:05:08 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 09:05:08 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:05:12 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Whaaaa"}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 19 Nov 2012 17:05:12 UTC +00:00], ["download_url", nil], ["name", "Whaaaa"], ["thumbnail_url", nil], ["updated_at", Mon, 19 Nov 2012 17:05:12 UTC +00:00], ["youtube_url", nil]]
+  [1m[35m (9.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/downloads/2
+Completed 302 Found in 49ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/downloads/2" for 127.0.0.1 at 2012-11-19 09:05:12 -0800
+Processing by DownloadsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDownload Load (0.2ms)[0m  [1mSELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered downloads/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/downloads/2" for 127.0.0.1 at 2012-11-19 09:05:12 -0800
+Processing by DownloadsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[35mDownload Load (0.3ms)[0m  SELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered downloads/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 09:05:12 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 09:05:12 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 09:05:12 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 09:05:12 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:05:16 -0800
+Processing by DownloadsController#index as HTML
+  [1m[36mDownload Load (0.3ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:05:16 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (0.6ms)[0m  SELECT "downloads".* FROM "downloads" 
+  Rendered downloads/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 09:05:16 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 09:05:16 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 09:05:16 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 09:05:16 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:07:36 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 13ms (Views: 4.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:07:36 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 14ms (Views: 13.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 09:07:36 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 09:07:36 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 09:07:36 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 09:07:36 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:07:42 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Check it out!"}}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `new' for TheRottenPirate:Module):
+  app/controllers/downloads_controller.rb:45:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.6ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:07:42 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (0.3ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:09:45 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Check it out!"}}
+Completed 500 Internal Server Error in 9ms
+
+NameError (uninitialized constant DownloadsController::Pirate):
+  app/controllers/downloads_controller.rb:45:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.6ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:09:46 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (0.3ms)[0m  SELECT "downloads".* FROM "downloads" 
+  Rendered downloads/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.3ms)
+Starting the New Relic Agent.
+NewRelic Agent Developer Mode enabled.
+To view performance information, go to http://localhost:3000/newrelic
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:10:00 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Check it out!"}}
+Completed 500 Internal Server Error in 137ms
+
+NameError (uninitialized constant DownloadsController::Pirate):
+  app/controllers/downloads_controller.rb:45:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.1ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:10:00 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (1.8ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 14ms (Views: 8.7ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:10:06 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Check it out!"}}
+Completed 500 Internal Server Error in 1ms
+
+NameError (uninitialized constant DownloadsController::Pirate):
+  app/controllers/downloads_controller.rb:45:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.2ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:10:06 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (0.3ms)[0m  SELECT "downloads".* FROM "downloads" 
+  Rendered downloads/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:10:28 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Check it out!"}}
+Completed 500 Internal Server Error in 7ms
+
+NameError (uninitialized constant DownloadsController::Pirate):
+  app/controllers/downloads_controller.rb:45:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.7ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (323.6ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:10:29 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (117.9ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 156ms (Views: 29.1ms | ActiveRecord: 117.9ms)
+Starting the New Relic Agent.
+NewRelic Agent Developer Mode enabled.
+To view performance information, go to http://localhost:3000/newrelic
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:11:12 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Check it out!"}}
+Completed 500 Internal Server Error in 438ms
+
+NameError (uninitialized constant DownloadsController::Pirate):
+  app/controllers/downloads_controller.rb:45:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (166.6ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:11:13 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (4.0ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 47ms (Views: 33.9ms | ActiveRecord: 4.0ms)
+Starting the New Relic Agent.
+NewRelic Agent Developer Mode enabled.
+To view performance information, go to http://localhost:3000/newrelic
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:13:14 -0800
+
+LoadError (Expected /Users/jhart/Sites/the_rotten_pirate/lib/download.rb to define Download):
+  app/controllers/downloads_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (48.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (213.8ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:13:15 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (90.0ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:13:35 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (14.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (313.9ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:13:37 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (33.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (20.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (374.7ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:14:05 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (72.2ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:14:05 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.4ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (148.2ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:14:08 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.4ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (73.1ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:14:09 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.6ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (152.8ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:15:21 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.3ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (80.3ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:15:22 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.5ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (113.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:15:27 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.3ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (85.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:15:27 -0800
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.8) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.8) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/error_collector.rb:8:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/browser_monitoring.rb:12:in `call'
+  newrelic_rpm (3.5.0.1) lib/new_relic/rack/developer_mode.rb:24:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1575160647758455954__call__678855525005525899__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/jhart/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.4ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.5ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (109.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:17:28 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 2091ms (Views: 160.1ms | ActiveRecord: 287.3ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 09:17:31 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (43ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 09:17:31 -0800
+Served asset /application.css - 304 Not Modified (97ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 09:17:31 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 43ms (Views: 41.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 09:17:32 -0800
+Served asset /bootstrap.css - 304 Not Modified (46ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 09:17:32 -0800
+Served asset /application.js - 304 Not Modified (105ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 09:17:46 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"What the heck"}}
+Completed 500 Internal Server Error in 2201ms
+
+NoMethodError (undefined method `css' for nil:NilClass):
+  lib/pirate.rb:40:in `search_for_dvd'
+  lib/pirate.rb:20:in `initialize_download'
+  app/controllers/downloads_controller.rb:45:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (72.6ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 09:17:48 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (15.4ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 55ms (Views: 29.3ms | ActiveRecord: 15.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 22:11:52 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 140ms (Views: 139.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 22:11:53 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:11:53 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:11:53 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:11:53 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:11:53 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+Starting the New Relic Agent.
+NewRelic Agent Developer Mode enabled.
+To view performance information, go to http://localhost:3000/newrelic
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:12:40 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"James and the giant peach"}}
+Completed 500 Internal Server Error in 1437ms
+
+NoMethodError (undefined method `css' for nil:NilClass):
+  lib/pirate.rb:40:in `search_for_dvd'
+  lib/pirate.rb:20:in `initialize_download'
+  app/controllers/downloads_controller.rb:45:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (43.9ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:12:42 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (1.8ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 34ms (Views: 29.3ms | ActiveRecord: 1.8ms)
+Starting the New Relic Agent.
+NewRelic Agent Developer Mode enabled.
+To view performance information, go to http://localhost:3000/newrelic
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:13:30 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"James and the giant peach"}}
+Completed 500 Internal Server Error in 2984ms
+
+NoMethodError (undefined method `insert' for #<Class:0x000001029a2ba0>):
+  lib/pirate.rb:27:in `initialize_download'
+  app/controllers/downloads_controller.rb:45:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (41.8ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:13:33 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (9.7ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 20ms (Views: 7.1ms | ActiveRecord: 9.7ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:15:05 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"James and the giant peach"}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (109.2ms)[0m  [1mINSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Tue, 20 Nov 2012 06:15:07 UTC +00:00], ["download_url", "http://torrents.thepiratebay.se/5556138/James.and.the.Giant.Peach.1996.INTERNAL.DVDRip.XviD-SChiZO.torrent"], ["name", "James and the giant peach"], ["thumbnail_url", nil], ["updated_at", Tue, 20 Nov 2012 06:15:07 UTC +00:00], ["youtube_url", nil]]
+  [1m[35m (26.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Tue, 20 Nov 2012 06:15:07 UTC +00:00], ["download_url", nil], ["name", "James and the giant peach"], ["thumbnail_url", nil], ["updated_at", Tue, 20 Nov 2012 06:15:07 UTC +00:00], ["youtube_url", nil]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/downloads/4
+Completed 302 Found in 2703ms (ActiveRecord: 151.0ms)
+
+
+Started GET "/downloads/4" for 127.0.0.1 at 2012-11-19 22:15:07 -0800
+Processing by DownloadsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mDownload Load (0.6ms)[0m  SELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1  [["id", "4"]]
+  Rendered downloads/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 41ms (Views: 36.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/downloads/4" for 127.0.0.1 at 2012-11-19 22:15:07 -0800
+Processing by DownloadsController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mDownload Load (0.3ms)[0m  [1mSELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  Rendered downloads/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 4.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:15:07 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (22ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:15:07 -0800
+Served asset /application.js - 304 Not Modified (67ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:15:08 -0800
+Served asset /application.css - 304 Not Modified (23ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:15:08 -0800
+Served asset /bootstrap.css - 304 Not Modified (58ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:15:49 -0800
+Processing by DownloadsController#index as HTML
+  [1m[35mDownload Load (0.4ms)[0m  SELECT "downloads".* FROM "downloads" 
+  Rendered downloads/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:15:49 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (0.3ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:15:49 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:15:49 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:15:49 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:15:49 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:15:51 -0800
+Processing by DownloadsController#index as HTML
+  [1m[35mDownload Load (0.2ms)[0m  SELECT "downloads".* FROM "downloads" 
+  Rendered downloads/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:15:51 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (0.4ms)[0m  [1mSELECT "downloads".* FROM "downloads" [0m
+  Rendered downloads/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:15:51 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:15:51 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:15:51 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:15:51 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:22:38 -0800
+Processing by DownloadsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `assert_valid_keys' for :limit:Symbol):
+  app/controllers/downloads_controller.rb:5:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.6ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:22:38 -0800
+Processing by DownloadsController#index as */*
+Completed 500 Internal Server Error in 0ms
+
+NoMethodError (undefined method `assert_valid_keys' for :limit:Symbol):
+  app/controllers/downloads_controller.rb:5:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.2ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:22:54 -0800
+Processing by DownloadsController#index as HTML
+  [1m[35mDownload Load (0.4ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+Completed 500 Internal Server Error in 46ms
+
+NameError (undefined local variable or method `movie' for #<Download:0x0000010205bd58>):
+  app/models/download.rb:10:in `has_youtube_url?'
+  app/controllers/downloads_controller.rb:108:in `block in get_youtube_information'
+  app/controllers/downloads_controller.rb:107:in `each'
+  app/controllers/downloads_controller.rb:107:in `get_youtube_information'
+  app/controllers/downloads_controller.rb:7:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.4ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:22:54 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (10.1ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+Completed 500 Internal Server Error in 22ms
+
+NameError (undefined local variable or method `movie' for #<Download:0x00000106baeeb8>):
+  app/models/download.rb:10:in `has_youtube_url?'
+  app/controllers/downloads_controller.rb:108:in `block in get_youtube_information'
+  app/controllers/downloads_controller.rb:107:in `each'
+  app/controllers/downloads_controller.rb:107:in `get_youtube_information'
+  app/controllers/downloads_controller.rb:7:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.8ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:23:08 -0800
+Processing by DownloadsController#index as HTML
+  [1m[35mDownload Load (0.4ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+Completed 500 Internal Server Error in 20ms
+
+NameError (undefined local variable or method `movie_name' for #<DownloadsController:0x0000010380e518>):
+  app/controllers/downloads_controller.rb:112:in `block in get_youtube_information'
+  app/controllers/downloads_controller.rb:107:in `each'
+  app/controllers/downloads_controller.rb:107:in `get_youtube_information'
+  app/controllers/downloads_controller.rb:7:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (72.1ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:23:09 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (2.8ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+Completed 500 Internal Server Error in 21ms
+
+NameError (undefined local variable or method `movie_name' for #<DownloadsController:0x000001020439b0>):
+  app/controllers/downloads_controller.rb:112:in `block in get_youtube_information'
+  app/controllers/downloads_controller.rb:107:in `each'
+  app/controllers/downloads_controller.rb:107:in `get_youtube_information'
+  app/controllers/downloads_controller.rb:7:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (65.5ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:23:23 -0800
+Processing by DownloadsController#index as HTML
+  [1m[35mDownload Load (14.0ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 1812ms
+
+ActiveModel::MassAssignmentSecurity::Error (Can't mass-assign protected attributes: trailer_url):
+  app/controllers/downloads_controller.rb:116:in `block in get_youtube_information'
+  app/controllers/downloads_controller.rb:107:in `each'
+  app/controllers/downloads_controller.rb:107:in `get_youtube_information'
+  app/controllers/downloads_controller.rb:7:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.1ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:23:25 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (0.4ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 1286ms
+
+ActiveModel::MassAssignmentSecurity::Error (Can't mass-assign protected attributes: trailer_url):
+  app/controllers/downloads_controller.rb:116:in `block in get_youtube_information'
+  app/controllers/downloads_controller.rb:107:in `each'
+  app/controllers/downloads_controller.rb:107:in `get_youtube_information'
+  app/controllers/downloads_controller.rb:7:in `index'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.8ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:24:04 -0800
+Processing by DownloadsController#index as HTML
+  [1m[35mDownload Load (0.3ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/hWnAqFyaQ5s?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/hWnAqFyaQ5s/mqdefault.jpg', "updated_at" = '2012-11-20 06:24:05.482336' WHERE "downloads"."id" = 1
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/o7qZw4o4IOc?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/o7qZw4o4IOc/mqdefault.jpg', "updated_at" = '2012-11-20 06:24:06.610269' WHERE "downloads"."id" = 2[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/73ax6ZrcUx4?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/73ax6ZrcUx4/mqdefault.jpg', "updated_at" = '2012-11-20 06:24:07.895473' WHERE "downloads"."id" = 3
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/73ax6ZrcUx4?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/73ax6ZrcUx4/mqdefault.jpg', "updated_at" = '2012-11-20 06:24:09.083027' WHERE "downloads"."id" = 4[0m
+  [1m[35m (215.0ms)[0m  COMMIT
+  Rendered downloads/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 5138ms (Views: 4.2ms | ActiveRecord: 220.6ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:24:09 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (0.5ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+  Rendered downloads/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 16ms (Views: 11.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:24:09 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:24:09 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:24:09 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:24:09 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:24:29 -0800
+Processing by DownloadsController#index as HTML
+  [1m[35mDownload Load (0.3ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  Rendered downloads/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:24:29 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (2.8ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+  Rendered downloads/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 10ms (Views: 2.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:24:29 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:24:29 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:24:29 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:24:29 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:24:44 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Cool beans"}}
+Completed 500 Internal Server Error in 785ms
+
+NoMethodError (undefined method `match' for nil:NilClass):
+  app/controllers/downloads_controller.rb:48:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.9ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:24:45 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (3.4ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  Rendered downloads/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 14ms (Views: 6.7ms | ActiveRecord: 3.4ms)
+Starting the New Relic Agent.
+NewRelic Agent Developer Mode enabled.
+To view performance information, go to http://localhost:3000/newrelic
+Installed New Relic Browser Monitoring middleware
+Connecting to database specified by database.yml
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:28:13 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Cool beans"}}
+Completed 500 Internal Server Error in 1096ms
+
+NoMethodError (undefined method `match' for nil:NilClass):
+  app/controllers/downloads_controller.rb:48:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.3ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:28:15 -0800
+Processing by DownloadsController#index as */*
+  [1m[36mDownload Load (1.2ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+  Rendered downloads/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 14ms (Views: 6.3ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:28:40 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Cool beans"}}
+Completed 500 Internal Server Error in 782ms
+
+NoMethodError (undefined method `match' for nil:NilClass):
+  app/controllers/downloads_controller.rb:48:in `create'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.4ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:28:41 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (7.9ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  Rendered downloads/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 18ms (Views: 5.9ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:29:27 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Cool beans"}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (20.6ms)[0m  INSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Tue, 20 Nov 2012 06:29:28 UTC +00:00], ["download_url", nil], ["name", "Cool beans"], ["thumbnail_url", nil], ["updated_at", Tue, 20 Nov 2012 06:29:28 UTC +00:00], ["youtube_url", nil]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/downloads/5
+Completed 302 Found in 839ms (ActiveRecord: 23.5ms)
+
+
+Started GET "/downloads/5" for 127.0.0.1 at 2012-11-19 22:29:28 -0800
+Processing by DownloadsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDownload Load (1.0ms)[0m  SELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1  [["id", "5"]]
+  Rendered downloads/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/downloads/5" for 127.0.0.1 at 2012-11-19 22:29:28 -0800
+Processing by DownloadsController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mDownload Load (0.3ms)[0m  [1mSELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1[0m  [["id", "5"]]
+  Rendered downloads/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:29:28 -0800
+Served asset /application.js - 304 Not Modified (29ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:29:28 -0800
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:29:28 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:29:28 -0800
+Served asset /bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/downloads/5" for 127.0.0.1 at 2012-11-19 22:30:38 -0800
+Processing by DownloadsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDownload Load (0.2ms)[0m  SELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1  [["id", "5"]]
+  Rendered downloads/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 14ms (Views: 4.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/downloads/5" for 127.0.0.1 at 2012-11-19 22:30:39 -0800
+Processing by DownloadsController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mDownload Load (0.3ms)[0m  [1mSELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1[0m  [["id", "5"]]
+  Rendered downloads/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 13ms (Views: 10.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:30:39 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:30:39 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:30:39 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:30:39 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:30:41 -0800
+Processing by DownloadsController#index as HTML
+  [1m[35mDownload Load (0.3ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/VTmcYClJCrk?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/VTmcYClJCrk/mqdefault.jpg', "updated_at" = '2012-11-20 06:30:42.291621' WHERE "downloads"."id" = 5
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  Rendered downloads/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 985ms (Views: 4.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:30:42 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (7.5ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  Rendered downloads/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 14ms (Views: 2.8ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:30:42 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:30:42 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:30:42 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:30:42 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:30:52 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Somewhere"}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Tue, 20 Nov 2012 06:30:54 UTC +00:00], ["download_url", "http://torrents.thepiratebay.se/6057328/Somewhere.2010.DVDRip.XviD-iLG.torrent"], ["name", "Somewhere"], ["thumbnail_url", nil], ["updated_at", Tue, 20 Nov 2012 06:30:54 UTC +00:00], ["youtube_url", nil]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Tue, 20 Nov 2012 06:30:54 UTC +00:00], ["download_url", nil], ["name", "Somewhere"], ["thumbnail_url", nil], ["updated_at", Tue, 20 Nov 2012 06:30:54 UTC +00:00], ["youtube_url", nil]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/downloads/7
+Completed 302 Found in 2521ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/downloads/7" for 127.0.0.1 at 2012-11-19 22:30:54 -0800
+Processing by DownloadsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mDownload Load (0.2ms)[0m  [1mSELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1[0m  [["id", "7"]]
+  Rendered downloads/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/downloads/7" for 127.0.0.1 at 2012-11-19 22:30:54 -0800
+Processing by DownloadsController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[35mDownload Load (0.2ms)[0m  SELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1  [["id", "7"]]
+  Rendered downloads/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:30:54 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:30:54 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:30:54 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:30:55 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:31:00 -0800
+Processing by DownloadsController#index as HTML
+  [1m[36mDownload Load (0.3ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/C9n9hP_LtL8?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/C9n9hP_LtL8/mqdefault.jpg', "updated_at" = '2012-11-20 06:31:01.824154' WHERE "downloads"."id" = 6[0m
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/C9n9hP_LtL8?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/C9n9hP_LtL8/mqdefault.jpg', "updated_at" = '2012-11-20 06:31:02.911479' WHERE "downloads"."id" = 7
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  Rendered downloads/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 2365ms (Views: 3.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:31:02 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:31:02 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:31:03 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:31:03 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:31:03 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (0.4ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  Rendered downloads/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/check?movie=undefined" for 127.0.0.1 at 2012-11-19 22:31:22 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"undefined"}
+Completed 500 Internal Server Error in 5ms
+
+LoadError (no such file to load -- mwich):
+  app/controllers/downloads_controller.rb:101:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 22:31:23 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 5ms
+
+LoadError (no such file to load -- mwich):
+  app/controllers/downloads_controller.rb:101:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.8ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:32:47 -0800
+Processing by DownloadsController#index as HTML
+  [1m[36mDownload Load (0.4ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+  Rendered downloads/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 7ms (Views: 4.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:32:48 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (0.5ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  Rendered downloads/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 17ms (Views: 12.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:32:48 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:32:48 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:32:48 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:32:48 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:33:08 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Dude where's my car"}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Tue, 20 Nov 2012 06:33:10 UTC +00:00], ["download_url", "http://torrents.thepiratebay.se/5393776/Dude, Where's My Car? (2000) [ENG] [DVDrip].torrent"], ["name", "Dude where's my car"], ["thumbnail_url", nil], ["updated_at", Tue, 20 Nov 2012 06:33:10 UTC +00:00], ["youtube_url", nil]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Tue, 20 Nov 2012 06:33:10 UTC +00:00], ["download_url", nil], ["name", "Dude where's my car"], ["thumbnail_url", nil], ["updated_at", Tue, 20 Nov 2012 06:33:10 UTC +00:00], ["youtube_url", nil]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/downloads/9
+Completed 302 Found in 2164ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/downloads/9" for 127.0.0.1 at 2012-11-19 22:33:10 -0800
+Processing by DownloadsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mDownload Load (0.7ms)[0m  [1mSELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1[0m  [["id", "9"]]
+  Rendered downloads/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/downloads/9" for 127.0.0.1 at 2012-11-19 22:33:11 -0800
+Processing by DownloadsController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[35mDownload Load (0.2ms)[0m  SELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1  [["id", "9"]]
+  Rendered downloads/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:33:11 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:33:11 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:33:11 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:33:11 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:33:20 -0800
+Processing by DownloadsController#index as HTML
+  [1m[36mDownload Load (0.3ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/d1wuijgeaaY?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/d1wuijgeaaY/mqdefault.jpg', "updated_at" = '2012-11-20 06:33:21.992158' WHERE "downloads"."id" = 8[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/d1wuijgeaaY?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/d1wuijgeaaY/mqdefault.jpg', "updated_at" = '2012-11-20 06:33:23.053793' WHERE "downloads"."id" = 9
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  Rendered downloads/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 2409ms (Views: 4.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:33:23 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:33:23 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:33:23 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:33:23 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:33:23 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (0.3ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  Rendered downloads/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 7ms (Views: 4.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/downloads" for 127.0.0.1 at 2012-11-19 22:36:00 -0800
+Processing by DownloadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3vVdMvBl/EvDxENVImzWLTzGiRl0cXzbqmSPTVIVelU=", "download"=>{"name"=>"Forgetting sarah marshall"}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "downloads" ("created_at", "download_url", "name", "thumbnail_url", "updated_at", "youtube_url") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Tue, 20 Nov 2012 06:36:08 UTC +00:00], ["download_url", "http://torrents.thepiratebay.se/4333791/Forgetting Sarah Marshall[2008][Unrated Edition]DvDrip-aXXo.torrent"], ["name", "Forgetting sarah marshall"], ["thumbnail_url", nil], ["updated_at", Tue, 20 Nov 2012 06:36:08 UTC +00:00], ["youtube_url", nil]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/downloads/10
+Completed 302 Found in 7689ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/downloads/10" for 127.0.0.1 at 2012-11-19 22:36:08 -0800
+Processing by DownloadsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[35mDownload Load (0.2ms)[0m  SELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1  [["id", "10"]]
+  Rendered downloads/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/downloads/10" for 127.0.0.1 at 2012-11-19 22:36:08 -0800
+Processing by DownloadsController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mDownload Load (0.6ms)[0m  [1mSELECT "downloads".* FROM "downloads" WHERE "downloads"."id" = $1 LIMIT 1[0m  [["id", "10"]]
+  Rendered downloads/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:36:08 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:36:08 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:36:08 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:36:08 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:36:16 -0800
+Processing by DownloadsController#index as HTML
+  [1m[35mDownload Load (0.3ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE "downloads" SET "youtube_url" = 'http://www.youtube.com/v/PyVEHIO6jZ0?version=3&f=videos&d=AbwzFT7QhZpZn9mRHDSJX48O88HsQjpE1a8d1GxQnGDm&app=youtube_gdata', "thumbnail_url" = 'http://i.ytimg.com/vi/PyVEHIO6jZ0/mqdefault.jpg', "updated_at" = '2012-11-20 06:36:18.084309' WHERE "downloads"."id" = 10
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  Rendered downloads/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 1102ms (Views: 4.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:36:18 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (5.1ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  Rendered downloads/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 11ms (Views: 3.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:36:18 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:36:18 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:36:18 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:36:18 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:36:32 -0800
+Processing by DownloadsController#index as HTML
+  [1m[36mDownload Load (0.3ms)[0m  [1mSELECT "downloads".* FROM "downloads" LIMIT 12[0m
+  Rendered downloads/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/downloads" for 127.0.0.1 at 2012-11-19 22:36:32 -0800
+Processing by DownloadsController#index as */*
+  [1m[35mDownload Load (0.5ms)[0m  SELECT "downloads".* FROM "downloads" LIMIT 12
+  Rendered downloads/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:36:32 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:36:32 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:36:32 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:36:32 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/check?movie=undefined" for 127.0.0.1 at 2012-11-19 22:36:39 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"undefined"}
+Completed 500 Internal Server Error in 5ms
+
+LoadError (no such file to load -- mwich):
+  app/controllers/downloads_controller.rb:101:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 22:36:39 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 7ms
+
+LoadError (no such file to load -- mwich):
+  app/controllers/downloads_controller.rb:101:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 22:36:56 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 15ms (Views: 5.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 22:36:56 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:36:56 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:36:56 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:36:56 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/check?movie=undefined" for 127.0.0.1 at 2012-11-19 22:37:03 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"undefined"}
+  Rendered downloads/check.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2030ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 22:37:05 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `gsub' for nil:NilClass):
+  lib/mwhich/hulu.rb:32:in `request'
+  lib/mwhich/hulu.rb:14:in `search'
+  lib/mwhich/client.rb:27:in `block in search'
+  lib/mwhich/client.rb:25:in `each'
+  lib/mwhich/client.rb:25:in `search'
+  app/controllers/downloads_controller.rb:104:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.8ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:37:05 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:37:05 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:37:05 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:37:05 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/check?movie=undefined" for 127.0.0.1 at 2012-11-19 22:37:15 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"undefined"}
+  Rendered downloads/check.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 698ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 22:37:16 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `gsub' for nil:NilClass):
+  lib/mwhich/hulu.rb:32:in `request'
+  lib/mwhich/hulu.rb:14:in `search'
+  lib/mwhich/client.rb:27:in `block in search'
+  lib/mwhich/client.rb:25:in `each'
+  lib/mwhich/client.rb:25:in `search'
+  app/controllers/downloads_controller.rb:104:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (34.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (51.1ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:37:16 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:37:16 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:37:16 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:37:16 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/check?movie=undefined" for 127.0.0.1 at 2012-11-19 22:40:37 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"undefined"}
+  Rendered downloads/check.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 993ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 22:40:38 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `gsub' for nil:NilClass):
+  lib/mwhich/hulu.rb:32:in `request'
+  lib/mwhich/hulu.rb:14:in `search'
+  lib/mwhich/client.rb:27:in `block in search'
+  lib/mwhich/client.rb:25:in `each'
+  lib/mwhich/client.rb:25:in `search'
+  app/controllers/downloads_controller.rb:104:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.2ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:40:38 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:40:38 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:40:38 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:40:38 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 22:41:31 -0800
+Processing by DownloadsController#new as HTML
+  Rendered downloads/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 14ms (Views: 5.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-19 22:41:31 -0800
+Processing by DownloadsController#new as */*
+  Rendered downloads/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:41:31 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:41:31 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:41:31 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:41:31 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/check?movie=dexter" for 127.0.0.1 at 2012-11-19 22:41:34 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"dexter"}
+  Rendered downloads/check.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 3418ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 22:41:38 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `gsub' for nil:NilClass):
+  lib/mwhich/hulu.rb:32:in `request'
+  lib/mwhich/hulu.rb:14:in `search'
+  lib/mwhich/client.rb:27:in `block in search'
+  lib/mwhich/client.rb:25:in `each'
+  lib/mwhich/client.rb:25:in `search'
+  app/controllers/downloads_controller.rb:104:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.2ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:41:38 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:41:38 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:41:38 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:41:38 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/check?movie=forgetting%20sarah%20marshall" for 127.0.0.1 at 2012-11-19 22:42:00 -0800
+Processing by DownloadsController#check as HTML
+  Parameters: {"movie"=>"forgetting sarah marshall"}
+  Rendered downloads/check.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1539ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/check" for 127.0.0.1 at 2012-11-19 22:42:02 -0800
+Processing by DownloadsController#check as */*
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `gsub' for nil:NilClass):
+  lib/mwhich/hulu.rb:32:in `request'
+  lib/mwhich/hulu.rb:14:in `search'
+  lib/mwhich/client.rb:27:in `block in search'
+  lib/mwhich/client.rb:25:in `each'
+  lib/mwhich/client.rb:25:in `search'
+  app/controllers/downloads_controller.rb:104:in `check'
+
+
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/jhart/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.1ms)
+
+
+Started GET "/assets/bootstrap-responsive.css" for 127.0.0.1 at 2012-11-19 22:42:02 -0800
+Served asset /bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.css" for 127.0.0.1 at 2012-11-19 22:42:02 -0800
+Served asset /bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-11-19 22:42:02 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-11-19 22:42:02 -0800
+Served asset /application.js - 304 Not Modified (0ms)

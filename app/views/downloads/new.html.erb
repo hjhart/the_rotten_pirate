@@ -1,0 +1,21 @@
+<script type="text/javascript">
+    $(function () {
+        $('#check_services').click(function (event) {
+            event.preventDefault();
+            var movie_value = $('#download_name').val()
+            var url = '/check?movie=' + movie_value
+            window.location = url
+        });
+    });
+</script>
+
+<%= form_for(@download) do |f| %>
+    <%= f.text_field :name, :placeholder => "Movie to download…", :class => "span3" %>
+    <button class="btn btn-success" href="#">
+      <i class="icon-download icon-white"></i> Download
+    </button>
+    <button class="btn" href="#" id="check_services">
+      <i class="icon-ok icon-white"></i> Check Free Services
+    </button>
+<% end %>
+<a class="btn" href="/downloads"><i class="icon-film"></i> What's new?</a>

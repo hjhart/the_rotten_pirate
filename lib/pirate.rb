@@ -16,16 +16,16 @@ class Pirate
     @l = ForkLogger.new 
   end
   
-  def initialize_download movie_title
-    torrent_to_download, full_results = search_for_dvd movie_title
+  def initialize_download download
+    torrent_to_download, full_results = search_for_dvd download.name
     puts "Torrents to download #{torrent_to_download}"
     if torrent_to_download.nil? 
-      puts "No results found for #{movie_title}"
+      puts "No results found for #{download.name}"
       return
     end
-    puts "Starting the download for #{movie_title}"
+    puts "Starting the download for #{download.name}"
     if Download.torrent_from_url torrent_to_download[:link]
-      Download.create(:name => torrent_to_download[:title], :download_url => torrent_to_download[:link])
+      download.download_url = torrent_to_download[:link]
       torrent_to_download[:link]
     else
       exit("Download failed while starting.")
