@@ -1,8 +1,9 @@
-
 source :rubygems
-gem 'rails', '3.2.8'
-gem 'pg'
 
+gem 'rails', '3.2.8'
+gem 'activerecord-jdbc-adapter'
+gem 'activerecord-jdbcpostgresql-adapter'
+gem 'jdbc-postgres'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -23,16 +24,10 @@ group :test do
 end
 
 gem 'torrent_api', '0.2.8'
-gem 'sequel', '~>3.2'
-gem 'sqlite3', '~>1.3'
-gem 'i18n'
-gem 'rake'
 gem 'prowl'
 gem 'youtube_it'
-gem 'sinatra'
 gem 'pry'
 gem 'pry-doc'
-gem 'yajl-ruby'
 gem 'ruby-hmac'
 gem 'nokogiri'
 gem 'rvm-capistrano'

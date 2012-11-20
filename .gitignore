@@ -5,3 +5,4 @@ config/prowl.yml
 config/config.yml
 .idea
 .DS_Store
+log/
