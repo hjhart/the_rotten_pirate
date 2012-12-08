@@ -7,7 +7,7 @@ set :use_sudo, false
 
 set :scm, :git
 set :repository,  "git@github.com:hjhart/#{application}.git"
-set :branch, 'master'
+set :branch, 'experimental'
 set :git_shallow_clone, 1
 
 role :web, domain
