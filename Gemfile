@@ -17,12 +17,15 @@ end
 
 gem 'jquery-rails'
 
+group :development do
+  gem 'warbler'
+end
 
 group :test do
 	gem 'rspec', '~>2.7'
-	gem 'awesome_print'
 end
 
+gem 'awesome_print'
 gem 'torrent_api', '0.2.8'
 gem 'prowl'
 gem 'youtube_it'
@@ -31,4 +34,3 @@ gem 'pry-doc'
 gem 'ruby-hmac'
 gem 'nokogiri'
 gem 'rvm-capistrano'
-gem 'newrelic_rpm'
