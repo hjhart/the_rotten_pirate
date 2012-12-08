@@ -6,3 +6,6 @@ config/config.yml
 .idea
 .DS_Store
 log/
+config/database.yml
+log/*
+public/assets/

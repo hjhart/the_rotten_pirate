@@ -1,1 +1,1 @@
-rvm use jruby-1.7.0@the_rotten_pirate --create
+rvm use ruby-1.9.3-p194@the_rotten_pirate --create
