@@ -187,6 +187,7 @@ GEM
       jruby-rack (>= 1.0.0)
       rake (>= 0.8.7)
       rubyzip (>= 0.9.4)
+    yajl-ruby (1.1.0)
     yard (0.7.4)
     youtube_it (2.1.4)
       builder
@@ -218,4 +219,5 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
   warbler
+  yajl-ruby
   youtube_it
