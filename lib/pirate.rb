@@ -85,7 +85,7 @@ class Pirate
     torrents_to_download.each do |download|
       output.puts "Starting the download for #{download[:title]}"
       if Download.torrent_from_url download[:link]
-        Download.create download[:title] 
+        Download.create(:name => download[:title], :download_url => download[:link])
         output.puts "Download successfully started."
       else
         output.error "Download failed while starting."
