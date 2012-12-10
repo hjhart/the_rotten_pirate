@@ -115,9 +115,11 @@ class DownloadsController < ApplicationController
 
             video_results = client.videos_by(:query => "#{movie.name} trailer")
             youtube_video = video_results.videos.first
-            trailer_url = youtube_video.media_content.first.url
-            thumbnail_url = youtube_video.thumbnails[1].url
-            movie.update_attributes(:youtube_url => trailer_url, :thumbnail_url => thumbnail_url)
+            if(youtube_video)
+              trailer_url = youtube_video.media_content.first.url
+              thumbnail_url = youtube_video.thumbnails[1].url
+              movie.update_attributes(:youtube_url => trailer_url, :thumbnail_url => thumbnail_url)
+            end
           rescue REXML::ParseException
             trailer_url = "http://www.crayons.com"
             thumbnail_url = "undefined"
