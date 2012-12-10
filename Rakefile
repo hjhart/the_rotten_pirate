@@ -8,7 +8,3 @@ TheRottenPirate::Application.load_tasks
 
 
 # These three lines will make sure that assets:precompile runs before warring up
-require 'warbler'
-Warbler::Task.new
-
-task :war => "assets:precompile"

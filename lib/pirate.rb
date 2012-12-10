@@ -160,7 +160,7 @@ class Pirate
   end
   
   def filter_out_already_downloaded
-    @dvds = dvds.reject { |f| Download.exists? f["Title"] }
+    @dvds = dvds.reject { |f| Download.exists? :name => f["Title"] }
   end
   
   def filter_out_non_certified_fresh
@@ -196,7 +196,7 @@ class Pirate
         end
       end
       dvds << dvd unless row_index == 0
-    end  
+    end
     dvds
   end
 end

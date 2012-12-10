@@ -40,16 +40,12 @@ task :initialize do
 end
 
 desc "This task loads the config file, fetches the rotten tomatoes feed, and downloads torrent files."
-task :execute do
-  $:.push 'lib'
-  require 'the_rotten_pirate'
+task :execute => :environment do
   Pirate.execute
 end
 
 desc "This task loads a file (newline delimited) and downloads each of the movies."
-task :download_from_watch_file do
-  $:.push 'lib'
-  require 'the_rotten_pirate'
+task :download_from_watch_file => :environment do
   trp = Pirate.new
   filename = trp.config['watch_file']
   if filename.nil?
