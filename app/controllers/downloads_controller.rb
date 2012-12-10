@@ -2,7 +2,7 @@ class DownloadsController < ApplicationController
   # GET /downloads
   # GET /downloads.json
   def index
-    @downloads = Download.all(:limit => 12)
+    @downloads = Download.all(:limit => 24, :order => "created_at desc", :conditions => "download_url is not null")
 
     get_youtube_information
 
@@ -43,23 +43,12 @@ class DownloadsController < ApplicationController
   # POST /downloads.json
   def create
     @download = Download.new(params[:download])
-
-    torrent_url = Pirate.new.initialize_download @download
-    if (torrent_url)
-      torrent_url_match = torrent_url.match(/http:\/\/torrents.thepiratebay.se\/\d+\/(.*)/)
-      if(torrent_url_match)
-        torrent_name = torrent_url_match[1]
-        session[:message] = "Download Started (filename is #{torrent_name})"
-      else
-        session[:message] = "Download Started (filename unknown)"
-      end
-    else
-      session[:error] = "No results were found at the downloading sites."
-    end
+    @pirate = Pirate.new
 
     respond_to do |format|
       if @download.save
-        format.html { redirect_to @download, notice: 'Download was successfully created.' }
+        ap @pirate.initialize_download(@download.id)
+        format.html { redirect_to @download, notice: 'Download was successfully created. Try refreshing to see the torrent name.' }
         format.json { render json: @download, status: :created, location: @download }
       else
         format.html { render action: "new" }

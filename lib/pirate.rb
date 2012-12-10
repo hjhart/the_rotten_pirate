@@ -16,7 +16,9 @@ class Pirate
     @l = ForkLogger.new 
   end
   
-  def initialize_download download
+
+  def initialize_download download_id
+    download = Download.find(download_id)
     torrent_to_download, full_results = search_for_dvd download.name
     puts "Torrents to download #{torrent_to_download}"
     if torrent_to_download.nil? 
@@ -26,11 +28,13 @@ class Pirate
     puts "Starting the download for #{download.name}"
     if Download.torrent_from_url torrent_to_download[:link]
       download.download_url = torrent_to_download[:link]
-      torrent_to_download[:link]
+      download.save
     else
       exit("Download failed while starting.")
     end
   end
+  
+  handle_asynchronously :initialize_download
   
   def search_for_dvd(title, full_analysis=[])
     @l.puts "*" * 80
@@ -81,7 +85,7 @@ class Pirate
     torrents_to_download.each do |download|
       output.puts "Starting the download for #{download[:title]}"
       if Download.torrent_from_url download[:link]
-        Download.insert download[:title] 
+        Download.create download[:title] 
         output.puts "Download successfully started."
       else
         output.error "Download failed while starting."
