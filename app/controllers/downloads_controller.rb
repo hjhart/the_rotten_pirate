@@ -5,6 +5,7 @@ class DownloadsController < ApplicationController
     @downloads = Download.all(:limit => 24, :order => "created_at desc", :conditions => "download_url is not null")
 
     get_youtube_information
+    replace_with_mobile_links_if_ios
 
     respond_to do |format|
       format.html # index.html.erb
@@ -121,4 +122,12 @@ class DownloadsController < ApplicationController
     end
   end
 
+  def replace_with_mobile_links_if_ios
+    mobile_user_agent ||= ( request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)|(AppleWebKit\/.+Mobile)/] )
+    if mobile_user_agent
+      @downloads.each do |download|
+        download[:youtube_url].gsub!(/\?version.*/, '')
+      end
+    end
+  end
 end
