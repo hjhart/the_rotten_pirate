@@ -1,6 +1,6 @@
 class Download < ActiveRecord::Base
   attr_accessible :download_url, :name, :thumbnail_url, :youtube_url
-  #validates_presence_of :name
+  validates_presence_of :name
 
   def self.add_youtube_url name, url, thumbnail_url = nil
     find_by_name(name).update(:youtube_url => url, :thumbnail_url => thumbnail_url)
