@@ -51,7 +51,7 @@ namespace :deploy do
     run "ln -s #{shared_path}/config/config.yml #{release_path}/config/config.yml"
     run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -s #{shared_path}/config/newrelic.yml #{release_path}/config/newrelic.yml"
-    run "ln -s #{release_path}/public/assets/ #{shared_path}/assets/"
+    run "ln -s #{shared_path}/assets/ #{release_path}/public/assets"
   end
   
 end
