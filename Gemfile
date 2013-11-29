@@ -7,8 +7,8 @@ end
 
 gem 'torrent_api', '0.2.7'
 gem 'sequel', '~>3.2'
-gem 'sqlite3', '~>1.3'
 gem 'whenever'
+gem 'sqlite3'
 gem 'i18n'
 gem 'rake'
 gem 'prowl'
