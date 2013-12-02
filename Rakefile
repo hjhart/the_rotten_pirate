@@ -2,7 +2,7 @@ task :default => :console
 
 desc "Loads up a console environment"
 task :console do
-    exec "irb -I lib -r the_rotten_pirate"
+    exec "irb -I lib -r #{File.join(File.dirname(__FILE__), "lib/the_rotten_pirate")}"
 end
 
 desc "Creates the initial database for storing movie downloads and missing config files"
@@ -40,15 +40,13 @@ end
 
 desc "This task loads the config file, fetches the rotten tomatoes feed, and downloads torrent files."
 task :execute do
-    $:.push 'lib'
-    require 'the_rotten_pirate'
+    require_relative 'lib/the_rotten_pirate'
     TheRottenPirate.execute
 end
 
 desc "This task loads a file (newline delimited) and downloads each of the movies."
 task :download_from_watch_file do
-    $:.push 'lib'
-    require 'the_rotten_pirate'
+    require_relative 'lib/the_rotten_pirate'
     trp = TheRottenPirate.new
     filename = trp.config['watch_file']
     if filename.nil?
