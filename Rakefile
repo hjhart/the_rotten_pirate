@@ -5,6 +5,11 @@ task :console do
     exec "irb -I lib -r #{File.join(File.dirname(__FILE__), "lib/the_rotten_pirate")}"
 end
 
+desc "Runs download specs"
+task :spec do
+    exec "rspec #{File.join(File.dirname(__FILE__), 'spec/download_spec.rb')}"
+end
+
 desc "Creates the initial database for storing movie downloads and missing config files"
 task :initialize do
 
@@ -23,10 +28,10 @@ task :initialize do
         puts "Database already exists"
     end
 
-    config_templpate = File.join(File.dirname(File.expand_path(__FILE__)), "config", "config.template.yml")
-    prowl_template = File.join(File.dirname(File.expand_path(__FILE__)), "config", "prowl.template.yml")
-    target_config_file = File.join(File.dirname(File.expand_path(__FILE__)), "config", "config.yml")
-    target_prowl_file = File.join(File.dirname(File.expand_path(__FILE__)), "config", "prowl.yml")
+    config_templpate = File.join(File.dirname(__FILE__), "config", "config.template.yml")
+    prowl_template = File.join(File.dirname(__FILE__), "config", "prowl.template.yml")
+    target_config_file = File.join(File.dirname(__FILE__), "config", "config.yml")
+    target_prowl_file = File.join(File.dirname(__FILE__), "config", "prowl.yml")
     unless File.exists? target_prowl_file
         FileUtils.copy(prowl_template, target_prowl_file) 
         puts "Creating working prowl config file..."
