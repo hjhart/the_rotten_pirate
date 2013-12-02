@@ -1,4 +1,4 @@
-require 'the_rotten_pirate'
+require_relative '../lib/the_rotten_pirate'
 
 describe TheRottenPirate do
   describe "#extract dvd info" do

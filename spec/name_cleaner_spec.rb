@@ -1,4 +1,4 @@
-require 'the_rotten_pirate'
+require_relative '../lib/the_rotten_pirate'
 
 describe NameCleaner do
   describe "#inititalize" do

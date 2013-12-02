@@ -1,4 +1,5 @@
 require 'sequel'
+require 'uri'
 
 class Download
     def self.connection
@@ -37,13 +38,19 @@ class Download
         torrent_filename_match = url.match(/.*\/(.*)/)
         torrent_name = torrent_filename_match.nil? ? "tmp.torrent" : torrent_filename_match[1]
         torrent_domain, torrent_uri = url.gsub(/https?:\/\//, '').split('.se')
+        torrent_uri = URI.escape(torrent_uri)
         torrent_domain += '.se'
 
         FileUtils.mkdir_p File.join(self.download_directory)
         filename = File.join(self.download_directory, torrent_name)
         Net::HTTP.start(torrent_domain) do |http|
             resp = http.get(torrent_uri)
-            open(filename, "wb") { |file| file.write(resp.body) }
+            if resp.msg == 'OK'
+                open(filename, "wb") { |file| file.write(resp.body) }
+            else
+                puts "HTTP Response not OK; was #{resp.msg}: #{resp.code}"
+                nil
+            end
         end
     end
 end

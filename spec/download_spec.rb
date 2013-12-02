@@ -1,4 +1,4 @@
-require 'the_rotten_pirate'
+require_relative '../lib/the_rotten_pirate'
 
 describe Download do
     describe "exists?" do
@@ -42,12 +42,8 @@ describe Download do
 
     describe "torrent_from_url" do
         it "should be able to download movies with square brackets in it's name" do
-            #lambda {
-                #Download.torrent_from_url "http://torrents.thepiratebay.se/6581033/Bad_Teacher[2011]R5_Line_XviD-ExtraTorrentRG.6581033.TPB.torrent"
-            #}.should_not raise_error
-
             lambda {
-                Download.torrent_from_url "http://torrents.thepiratebay.se/9249283/How_I_Met_Your_Mother_S09E11_HDTV_x264-KILLERS_%5Beztv%5D.torrent"
+                Download.torrent_from_url "http://torrents.thepiratebay.se/6581033/Bad_Teacher[2011]R5_Line_XviD-ExtraTorrentRG.6581033.TPB.torrent"
             }.should_not raise_error
         end
     end

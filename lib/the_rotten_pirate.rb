@@ -1,5 +1,6 @@
 require 'awesome_print'
 require 'torrent_api'
+require 'uri'
 require 'yaml'
 require_relative 'download'
 require_relative 'fork_logger'
@@ -13,18 +14,18 @@ class TheRottenPirate
     def initialize
         @config = YAML.load(File.open(File.dirname(__FILE__) + '/../config/config.yml').read)
         @dvds = nil
-        @l = ForkLogger.new 
+        @l = ForkLogger.new
     end
 
     def initialize_download movie_title
         torrent_to_download, full_results = search_for_dvd movie_title
-        if torrent_to_download.nil? 
+        if torrent_to_download.nil?
             puts "No results found for #{movie_title}"
             return
         end
         puts "Starting the download for #{movie_title}"
-        if Download.torrent_from_url torrent_to_download[:link]
-            Download.insert torrent_to_download[:title] 
+        if Download.torrent_from_url URI.escape(torrent_to_download[:link])
+            Download.insert torrent_to_download[:title]
             puts "Download successfully started."
         else
             exit("Download failed while starting.")
@@ -46,7 +47,7 @@ class TheRottenPirate
             minimum_seeds = @config["comments"]["minimum_seeds"]
 
             quality_level = @config["comments"]["quality"] == "low" ? :init : :full
-            @l.puts "Processing #{[num_to_analyze, results.size].min} torrent pages for comments (as configured)."        
+            @l.puts "Processing #{[num_to_analyze, results.size].min} torrent pages for comments (as configured)."
 
             analysis_results = analyze_results results, num_to_analyze, quality_level, minimum_seeds
             analysis_results = analysis_results.sort_by { |r| -(r[:video][:rank]) }
