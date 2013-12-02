@@ -1,5 +1,4 @@
 require 'sequel'
-require 'pry'
 
 class Download
     def self.connection
