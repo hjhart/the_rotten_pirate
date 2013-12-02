@@ -1,4 +1,5 @@
 require 'sequel'
+require 'pry'
 
 class Download
     def self.connection
@@ -34,11 +35,10 @@ class Download
     def self.torrent_from_url url
         require 'net/http'
 
-
         torrent_filename_match = url.match(/.*\/(.*)/)
         torrent_name = torrent_filename_match.nil? ? "tmp.torrent" : torrent_filename_match[1]
-        torrent_domain, torrent_uri = url.gsub(/https?:\/\//, '').split('.se')
-        torrent_domain += '.se'
+        torrent_domain, torrent_uri = url.gsub(/https?:\/\//, '').split('.org')
+        torrent_domain += '.sx'
 
         FileUtils.mkdir_p File.join(self.download_directory)
         filename = File.join(self.download_directory, torrent_name)
